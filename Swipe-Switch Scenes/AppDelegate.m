@@ -62,10 +62,10 @@
 	//
 	//
 	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
-								   pixelFormat:kEAGLColorFormatRGB565	// kEAGLColorFormatRGBA8
-								   depthFormat:0						// GL_DEPTH_COMPONENT16_OES
+								   pixelFormat:kEAGLColorFormatRGBA8	  // kEAGLColorFormatRGBA8
+								   depthFormat:GL_DEPTH_COMPONENT24_OES	  // GL_DEPTH_COMPONENT16_OES
 						];
-	
+    
 	// attach the openglView to the director
 	[director setOpenGLView:glView];
 	
@@ -128,6 +128,9 @@
 
 -(void) applicationDidEnterBackground:(UIApplication*)application {
 	[[CCDirector sharedDirector] stopAnimation];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application {
@@ -135,6 +138,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+        
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	[[director openGLView] removeFromSuperview];
@@ -144,6 +148,7 @@
 	[window release];
 	
 	[director end];	
+
 }
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
