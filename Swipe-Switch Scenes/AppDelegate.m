@@ -115,6 +115,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	[[CCDirector sharedDirector] resume];
+    
+    int lastSceneViewed = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
+    NSLog(@"Last scene viewed from NSUserDefaults (before leaving app): %i", lastSceneViewed);
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {

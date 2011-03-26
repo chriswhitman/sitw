@@ -15,8 +15,9 @@
 
 - (void) setUserIsInBookFlag;
 - (void) unsetUserIsInBookFlag;
-- (void) setStoryPlayMode:(NSString *)storyType;
+- (void) setStoryPlayMode:(NSString *)storyPlayMode;
 - (void) setCurrentScene:(int)currentScene;
+- (void) setLastViewedScene:(int)lastViewedScene;
 
 @end
 

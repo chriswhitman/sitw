@@ -15,6 +15,7 @@
 		834D832E133C6E6D00ECA0F8 /* read_to_me_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 834D8328133C6E6D00ECA0F8 /* read_to_me_selected.png */; };
 		834D832F133C6E6D00ECA0F8 /* read_to_me.png in Resources */ = {isa = PBXBuildFile; fileRef = 834D8329133C6E6D00ECA0F8 /* read_to_me.png */; };
 		8366472C133D4054007A51C2 /* GlobalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366472B133D4054007A51C2 /* GlobalDataManager.m */; };
+		8366472F133D9A2E007A51C2 /* GameStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366472E133D9A2C007A51C2 /* GameStateManager.m */; };
 		83B60B881339A8B000315898 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B60B871339A8B000315898 /* QuartzCore.framework */; };
 		83B60B8A1339A8B000315898 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B60B891339A8B000315898 /* OpenGLES.framework */; };
 		83B60B8C1339A8B000315898 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B60B8B1339A8B000315898 /* OpenAL.framework */; };
@@ -131,7 +132,7 @@
 		83B60CE21339A8B400315898 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60CE11339A8B400315898 /* main.m */; };
 		83B60CE51339A8B400315898 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60CE41339A8B400315898 /* AppDelegate.m */; };
 		83B60CE81339A8B400315898 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60CE71339A8B400315898 /* RootViewController.m */; };
-		83B60CEB1339A8B400315898 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60CEA1339A8B400315898 /* HelloWorldLayer.m */; };
+		83B60CEB1339A8B400315898 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60CEA1339A8B400315898 /* MainMenuScene.m */; };
 		83B60CF31339C67000315898 /* menu_read_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B60CF21339C67000315898 /* menu_read_book.png */; };
 		83B60CF51339C67900315898 /* menu_read_book_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B60CF41339C67900315898 /* menu_read_book_selected.png */; };
 		83B60D041339D76000315898 /* PageTwoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60D031339D76000315898 /* PageTwoScene.m */; };
@@ -157,6 +158,8 @@
 		834D8329133C6E6D00ECA0F8 /* read_to_me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = read_to_me.png; path = "../../../../Desktop/iphone app/read_to_me.png"; sourceTree = "<group>"; };
 		8366472A133D4053007A51C2 /* GlobalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDataManager.h; sourceTree = "<group>"; };
 		8366472B133D4054007A51C2 /* GlobalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalDataManager.m; sourceTree = "<group>"; };
+		8366472D133D9A2B007A51C2 /* GameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateManager.h; sourceTree = "<group>"; };
+		8366472E133D9A2C007A51C2 /* GameStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStateManager.m; sourceTree = "<group>"; };
 		83B60B831339A8B000315898 /* Swipe-Switch Scenes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe-Switch Scenes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B60B871339A8B000315898 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		83B60B891339A8B000315898 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -388,8 +391,8 @@
 		83B60CE41339A8B400315898 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		83B60CE61339A8B400315898 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83B60CE71339A8B400315898 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		83B60CE91339A8B400315898 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		83B60CEA1339A8B400315898 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		83B60CE91339A8B400315898 /* MainMenuScene.h */ = {isa = PBXFileReference; path = MainMenuScene.h; sourceTree = "<group>"; };
+		83B60CEA1339A8B400315898 /* MainMenuScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
 		83B60CEC1339A8B400315898 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		83B60CF21339C67000315898 /* menu_read_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_read_book.png; path = Resources/menu_read_book.png; sourceTree = "<group>"; };
 		83B60CF41339C67900315898 /* menu_read_book_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_read_book_selected.png; path = Resources/menu_read_book_selected.png; sourceTree = "<group>"; };
@@ -458,7 +461,7 @@
 		83B60B781339A8B000315898 = {
 			isa = PBXGroup;
 			children = (
-				83B60B971339A8B000315898 /* Swipe-Switch Scenes */,
+				83B60B971339A8B000315898 /* Classes */,
 				83B60B861339A8B000315898 /* Frameworks */,
 				83B60B841339A8B000315898 /* Products */,
 			);
@@ -487,11 +490,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		83B60B971339A8B000315898 /* Swipe-Switch Scenes */ = {
+		83B60B971339A8B000315898 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				8366472A133D4053007A51C2 /* GlobalDataManager.h */,
 				8366472B133D4054007A51C2 /* GlobalDataManager.m */,
+				8366472D133D9A2B007A51C2 /* GameStateManager.h */,
+				8366472E133D9A2C007A51C2 /* GameStateManager.m */,
 				83B60D051339DA7500315898 /* PageOneScene.h */,
 				83B60D061339DA7500315898 /* PageOneScene.m */,
 				83B60D021339D75F00315898 /* PageTwoScene.h */,
@@ -502,8 +507,8 @@
 				83B60CE41339A8B400315898 /* AppDelegate.m */,
 				83B60CE61339A8B400315898 /* RootViewController.h */,
 				83B60CE71339A8B400315898 /* RootViewController.m */,
-				83B60CE91339A8B400315898 /* HelloWorldLayer.h */,
-				83B60CEA1339A8B400315898 /* HelloWorldLayer.m */,
+				83B60CE91339A8B400315898 /* MainMenuScene.h */,
+				83B60CEA1339A8B400315898 /* MainMenuScene.m */,
 				83B60CEC1339A8B400315898 /* GameConfig.h */,
 				83B60D89133A9D1900315898 /* GestureConfig.h */,
 				83B60D8D133A9FEE00315898 /* GestureSetup.h */,
@@ -516,6 +521,7 @@
 				83B60CC61339A8B400315898 /* TouchJSON */,
 				83B60CDF1339A8B400315898 /* Supporting Files */,
 			);
+			name = Classes;
 			path = "Swipe-Switch Scenes";
 			sourceTree = "<group>";
 		};
@@ -987,7 +993,7 @@
 				83B60CE21339A8B400315898 /* main.m in Sources */,
 				83B60CE51339A8B400315898 /* AppDelegate.m in Sources */,
 				83B60CE81339A8B400315898 /* RootViewController.m in Sources */,
-				83B60CEB1339A8B400315898 /* HelloWorldLayer.m in Sources */,
+				83B60CEB1339A8B400315898 /* MainMenuScene.m in Sources */,
 				83B60D041339D76000315898 /* PageTwoScene.m in Sources */,
 				83B60D071339DA7600315898 /* PageOneScene.m in Sources */,
 				83B60D81133A7EC500315898 /* CGPointUtils.m in Sources */,
@@ -998,6 +1004,7 @@
 				83B60D88133A830300315898 /* Page.m in Sources */,
 				83B60D8C133A9F6500315898 /* PageThreeScene.m in Sources */,
 				8366472C133D4054007A51C2 /* GlobalDataManager.m in Sources */,
+				8366472F133D9A2E007A51C2 /* GameStateManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

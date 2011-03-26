@@ -42,8 +42,9 @@
         GlobalDataManager *data = [[GlobalDataManager alloc] init];
         [data setCurrentScene:3];
         
-        extern int gCurrentScene;
-        NSLog(@"On scene %i", gCurrentScene);
+        // set last viewed scene global varoable (gLastViewedScene gets set)
+        GlobalDataManager *data_last_viewed = [[GlobalDataManager alloc] init];
+        [data_last_viewed setLastViewedScene:3];
         
         #include "GestureConfig.h"
         
@@ -53,7 +54,10 @@
         _label.position = ccp(winSize.width/2, winSize.height/2);
         [self addChild:_label];
         
+        [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"lastViewedScene"];
         
+        int currentScene = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
+        NSLog(@"Current scene retrieved from NSUserDefaults: %i", currentScene);
     }	
     return self;
 }
@@ -74,6 +78,7 @@
     NSLog(@"Swipe left.");
     if (!touched) {
         touched=!touched;
+            
     }
 }
 

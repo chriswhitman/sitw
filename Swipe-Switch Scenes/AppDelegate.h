@@ -11,7 +11,8 @@
 @class RootViewController;
 
 BOOL gIsInBook = FALSE;
-int gCurrentScene = 0;
+int gCurrentScene;
+int gLastViewedScene;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
 	UIWindow			*window;

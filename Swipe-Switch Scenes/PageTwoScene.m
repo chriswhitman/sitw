@@ -36,8 +36,9 @@
         GlobalDataManager *data = [[GlobalDataManager alloc] init];
         [data setCurrentScene:2];
         
-        extern int gCurrentScene;
-        NSLog(@"On scene %i", gCurrentScene);
+        // set last viewed scene global varoable (gLastViewedScene gets set)
+        GlobalDataManager *data_last_viewed = [[GlobalDataManager alloc] init];
+        [data_last_viewed setLastViewedScene:2];
         
         // allow touches on scene
         self.isTouchEnabled=YES;
@@ -50,7 +51,11 @@
         _label.color = ccc3(0,0,0);
         _label.position = ccp(winSize.width/2, winSize.height/2);
         [self addChild:_label];
-    
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"lastViewedScene"];
+        
+        int currentScene = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
+        NSLog(@"Current scene retrieved from NSUserDefaults: %i", currentScene);
     }	
     return self;
 }
