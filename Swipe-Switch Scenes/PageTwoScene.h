@@ -9,7 +9,6 @@
 #import "cocos2d.h"
 #import "Gestures.h"
 
-
 @interface PageTwoLayer : CCColorLayer <GestureComplete> {
     bool touched;
     

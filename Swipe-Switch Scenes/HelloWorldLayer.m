@@ -10,9 +10,9 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 #import "PageOneScene.h"
+#import "PageTwoScene.h"
 #import "PageThreeScene.h"
 #import "CCTransition.h"
-#import "PageTwoScene.h"
 #import "GlobalDataManager.h"
 
 // MainMenuScene implementation
@@ -77,7 +77,7 @@
 	if( (self=[super init])) {
         
         GlobalDataManager *action = [[GlobalDataManager alloc]init];
-        [action makeUserBeInBook];
+        [action setUserIsInBookFlag];
         
         // add a background to the layer
         CCSprite* background = [CCSprite spriteWithFile:@"main_menu_background.png"];
@@ -155,12 +155,6 @@
 
 - (void) promptToResumeOrStartOver
 {
-    extern BOOL isInBook;
-    NSLog(@"%s", (isInBook)?"true":"false");
-    GlobalDataManager *action = [[GlobalDataManager alloc]init];
-    [action removeUserFromBook];
-    NSLog(@"%s", (isInBook)?"true":"false");
-    
     
     // UIAlertView usage
     UIAlertView *alert = [[UIAlertView alloc] init];
@@ -175,11 +169,15 @@
 
 - (void) setReadToMeFlagAndGoToBook: (CCMenuItem *) menuitem 
 {
+    // setStoryPlayMode here
+    
     [self promptToResumeOrStartOver];
 }
 
 - (void) setReadItMyselfFlagAndGoToBook: (CCMenuItem *) menuitem 
 {
+    // setStoryPlayMode here
+    
     [self promptToResumeOrStartOver];
     
     // PageOneScene *pageOneScene = [PageOneScene node];
@@ -188,6 +186,8 @@
 
 - (void) setAutoPlayFlagAndGoToBook: (CCMenuItem *) menuitem 
 {
+    // setStoryPlayMode here
+    
     [self promptToResumeOrStartOver];
     
     // PageOneScene *pageOneScene = [PageOneScene node];

@@ -11,14 +11,30 @@
 
 @implementation GlobalDataManager
 
-- (void) makeUserBeInBook{
-    extern BOOL isInBook;
-    isInBook = TRUE;
+- (void) setUserIsInBookFlag
+{
+    extern BOOL gIsInBook;
+    
+    gIsInBook = TRUE;
 }
 
-- (void) removeUserFromBook{
-    extern BOOL isInBook;
-    isInBook = FALSE;
+- (void) unsetUserIsInBookFlag
+{
+    extern BOOL gIsInBook;
+    
+    gIsInBook = FALSE;
+}
+
+- (void) setStoryPlayMode:(NSString *)storyType
+{
+    // logic to set the story play mode global here
+}
+
+- (void) setCurrentScene:(int)currentScene
+{
+    extern int gCurrentScene;
+    
+    gCurrentScene = currentScene;
 }
 
 @end

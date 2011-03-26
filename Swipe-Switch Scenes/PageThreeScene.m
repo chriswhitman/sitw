@@ -4,6 +4,7 @@
 #import "CCTransition.h"
 #import "CCTransitionPageTurn.h"
 #import "HelloWorldLayer.h"
+#import "GlobalDataManager.h"
 
 
 @implementation PageThreeScene
@@ -36,6 +37,13 @@
         // allow touches on scene
         self.isTouchEnabled=YES;
 		touched=FALSE;
+        
+        // set out current scene global (gCurrentScene) to the current scene
+        GlobalDataManager *data = [[GlobalDataManager alloc] init];
+        [data setCurrentScene:3];
+        
+        extern int gCurrentScene;
+        NSLog(@"On scene %i", gCurrentScene);
         
         #include "GestureConfig.h"
         

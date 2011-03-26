@@ -13,8 +13,10 @@
 
 }
 
-- (void) makeUserBeInBook;
-- (void) removeUserFromBook;
+- (void) setUserIsInBookFlag;
+- (void) unsetUserIsInBookFlag;
+- (void) setStoryPlayMode:(NSString *)storyType;
+- (void) setCurrentScene:(int)currentScene;
 
 @end
 

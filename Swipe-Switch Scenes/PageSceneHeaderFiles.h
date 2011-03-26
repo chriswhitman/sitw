@@ -1,6 +1,0 @@
-#import "PageOneScene.h"
-#import "PageTwoScene.h"
-#import "CCTransition.h"
-#import "CCTransitionPageTurn.h"
-#import "HelloWorldLayer.h"
-#import "globals.m"

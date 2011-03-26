@@ -155,7 +155,6 @@
 		834D8327133C6E6D00ECA0F8 /* read_it_myself.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = read_it_myself.png; path = "../../../../Desktop/iphone app/read_it_myself.png"; sourceTree = "<group>"; };
 		834D8328133C6E6D00ECA0F8 /* read_to_me_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = read_to_me_selected.png; path = "../../../../Desktop/iphone app/read_to_me_selected.png"; sourceTree = "<group>"; };
 		834D8329133C6E6D00ECA0F8 /* read_to_me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = read_to_me.png; path = "../../../../Desktop/iphone app/read_to_me.png"; sourceTree = "<group>"; };
-		834D8333133C7B8D00ECA0F8 /* PageSceneHeaderFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSceneHeaderFiles.h; sourceTree = "<group>"; };
 		8366472A133D4053007A51C2 /* GlobalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDataManager.h; sourceTree = "<group>"; };
 		8366472B133D4054007A51C2 /* GlobalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalDataManager.m; sourceTree = "<group>"; };
 		83B60B831339A8B000315898 /* Swipe-Switch Scenes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe-Switch Scenes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -389,7 +388,7 @@
 		83B60CE41339A8B400315898 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		83B60CE61339A8B400315898 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83B60CE71339A8B400315898 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		83B60CE91339A8B400315898 /* HelloWorldLayer.h */ = {isa = PBXFileReference; path = HelloWorldLayer.h; sourceTree = "<group>"; };
+		83B60CE91339A8B400315898 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
 		83B60CEA1339A8B400315898 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		83B60CEC1339A8B400315898 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		83B60CF21339C67000315898 /* menu_read_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_read_book.png; path = Resources/menu_read_book.png; sourceTree = "<group>"; };
@@ -408,7 +407,6 @@
 		83B60D7E133A7EC500315898 /* SquareGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SquareGesture.m; path = ../../../../Downloads/Gestures/SquareGesture.m; sourceTree = "<group>"; };
 		83B60D7F133A7EC500315898 /* XGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGesture.h; path = ../../../../Downloads/Gestures/XGesture.h; sourceTree = "<group>"; };
 		83B60D80133A7EC500315898 /* XGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGesture.m; path = ../../../../Downloads/Gestures/XGesture.m; sourceTree = "<group>"; };
-		83B60D86133A82FB00315898 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
 		83B60D87133A82FD00315898 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
 		83B60D89133A9D1900315898 /* GestureConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureConfig.h; sourceTree = "<group>"; };
 		83B60D8A133A9F5800315898 /* PageThreeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageThreeScene.h; sourceTree = "<group>"; };
@@ -517,8 +515,6 @@
 				83B60CB51339A8B300315898 /* FontLabel */,
 				83B60CC61339A8B400315898 /* TouchJSON */,
 				83B60CDF1339A8B400315898 /* Supporting Files */,
-				83B60D86133A82FB00315898 /* Page.h */,
-				834D8333133C7B8D00ECA0F8 /* PageSceneHeaderFiles.h */,
 			);
 			path = "Swipe-Switch Scenes";
 			sourceTree = "<group>";

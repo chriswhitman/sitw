@@ -10,7 +10,8 @@
 
 @class RootViewController;
 
-BOOL isInBook = FALSE;
+BOOL gIsInBook = FALSE;
+int gCurrentScene = 0;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
 	UIWindow			*window;

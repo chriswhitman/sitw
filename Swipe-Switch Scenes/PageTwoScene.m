@@ -3,6 +3,7 @@
 #import "PageThreeScene.h"
 #import "CCTransition.h"
 #import "HelloWorldLayer.h"
+#import "GlobalDataManager.h"
 
 @implementation PageTwoScene
 @synthesize layer = _layer;
@@ -31,7 +32,12 @@
 {
     if( (self=[super initWithColor:ccc4(255,255,255,255)] )) {
         
-        // isInBook = TRUE;
+        // set out current scene global (gCurrentScene) to the current scene
+        GlobalDataManager *data = [[GlobalDataManager alloc] init];
+        [data setCurrentScene:2];
+        
+        extern int gCurrentScene;
+        NSLog(@"On scene %i", gCurrentScene);
         
         // allow touches on scene
         self.isTouchEnabled=YES;

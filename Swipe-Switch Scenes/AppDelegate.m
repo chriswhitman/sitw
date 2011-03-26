@@ -10,7 +10,7 @@
 
 #import "AppDelegate.h"
 #import "GameConfig.h"
-#import "MainMenuScene.h"
+#import "HelloWorldLayer.h"
 #import "RootViewController.h"
 
 @implementation AppDelegate
