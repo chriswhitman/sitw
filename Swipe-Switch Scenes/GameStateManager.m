@@ -35,7 +35,6 @@
             [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn transitionWithDuration:1.0 scene:pageTwoScene]];
             break;
         }
-        
         case 3:
         {
             PageThreeScene *pageThreeScene = [PageThreeScene node];

@@ -142,7 +142,6 @@
 		83B60D83133A7EC500315898 /* Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60D7C133A7EC500315898 /* Gestures.m */; };
 		83B60D84133A7EC500315898 /* SquareGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60D7E133A7EC500315898 /* SquareGesture.m */; };
 		83B60D85133A7EC500315898 /* XGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60D80133A7EC500315898 /* XGesture.m */; };
-		83B60D88133A830300315898 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60D87133A82FD00315898 /* Page.m */; };
 		83B60D8C133A9F6500315898 /* PageThreeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B60D8B133A9F5C00315898 /* PageThreeScene.m */; };
 		83B60D8F133ADE2500315898 /* main_menu_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B60D8E133ADE2500315898 /* main_menu_background.png */; };
 		83B60D91133C532800315898 /* snowstorm.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83B60D90133C532800315898 /* snowstorm.plist */; };
@@ -411,7 +410,6 @@
 		83B60D7E133A7EC500315898 /* SquareGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SquareGesture.m; path = ../../../../Downloads/Gestures/SquareGesture.m; sourceTree = "<group>"; };
 		83B60D7F133A7EC500315898 /* XGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XGesture.h; path = ../../../../Downloads/Gestures/XGesture.h; sourceTree = "<group>"; };
 		83B60D80133A7EC500315898 /* XGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XGesture.m; path = ../../../../Downloads/Gestures/XGesture.m; sourceTree = "<group>"; };
-		83B60D87133A82FD00315898 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
 		83B60D89133A9D1900315898 /* GestureConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureConfig.h; sourceTree = "<group>"; };
 		83B60D8A133A9F5800315898 /* PageThreeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageThreeScene.h; sourceTree = "<group>"; };
 		83B60D8B133A9F5C00315898 /* PageThreeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageThreeScene.m; sourceTree = "<group>"; };
@@ -725,7 +723,6 @@
 		83B60C9D1339A8B300315898 /* CocosDenshion */ = {
 			isa = PBXGroup;
 			children = (
-				83B60D87133A82FD00315898 /* Page.m */,
 				83B60C9E1339A8B300315898 /* CDAudioManager.h */,
 				83B60C9F1339A8B300315898 /* CDAudioManager.m */,
 				83B60CA11339A8B300315898 /* CDConfig.h */,
@@ -1003,7 +1000,6 @@
 				83B60D83133A7EC500315898 /* Gestures.m in Sources */,
 				83B60D84133A7EC500315898 /* SquareGesture.m in Sources */,
 				83B60D85133A7EC500315898 /* XGesture.m in Sources */,
-				83B60D88133A830300315898 /* Page.m in Sources */,
 				83B60D8C133A9F6500315898 /* PageThreeScene.m in Sources */,
 				8366472C133D4054007A51C2 /* GlobalDataManager.m in Sources */,
 				8366472F133D9A2E007A51C2 /* GameStateManager.m in Sources */,
@@ -1062,7 +1058,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1079,7 +1075,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

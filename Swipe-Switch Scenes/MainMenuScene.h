@@ -14,13 +14,13 @@
 
 
 
-// HelloWorldLayer
-@interface HelloWorldLayer : CCLayer
+// MainMenuLayer
+@interface MainMenuLayer : CCLayer
 {
     CCParticleSystem *emitter;
 }
 
-// returns a CCScene that contains the HelloWorldLayer as the only child
+// returns a CCScene that contains the MainMenuLayer as the only child
 +(CCScene *) scene;
 
 - (void) resumeOrStartOverAlert;

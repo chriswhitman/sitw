@@ -17,7 +17,7 @@
 #import "GameStateManager.h"
 
 // MainMenuScene implementation
-@implementation HelloWorldLayer
+@implementation MainMenuLayer
 
 +(CCScene *) scene
 {
@@ -25,7 +25,7 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	MainMenuLayer *layer = [MainMenuLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];

@@ -13,6 +13,7 @@
 BOOL gIsInBook = FALSE;
 int gCurrentScene;
 int gLastViewedScene;
+NSString* gStoryPlayMode;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
 	UIWindow			*window;
