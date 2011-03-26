@@ -10,8 +10,11 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 #import "PageOneScene.h"
+#import "PageThreeScene.h"
 #import "CCTransition.h"
 #import "PageTwoScene.h"
+
+BOOL gUserInBook = FALSE;
 
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
@@ -74,6 +77,9 @@
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
         
+        PageOneScene *action = [[PageOneScene alloc]init];
+        [action makeUserBeInBook];
+        
         // add a background to the layer
         CCSprite* background = [CCSprite spriteWithFile:@"main_menu_background.png"];
         background.tag = 1;
@@ -104,22 +110,10 @@
         emitter.speedVar = 30;
         
         [self addChild:emitter];
-        
         // EMITTER SETUP END ///////////////////////////////////////////////////////
         
         // retrieve the state of the game for user preference
         /// int scene = [[NSUserDefaults standardUserDefaults] integerForKey:@"currentScene"];
-        
-        
-        // UIAlertView usage
-        UIAlertView *alert = [[UIAlertView alloc] init];
-        [alert setTitle:@"Would you like to resume where you left off?"];
-        [alert setDelegate:self];
-        [alert addButtonWithTitle:@"Resume"]; // button index 0
-        [alert addButtonWithTitle:@"Start Over"]; // button index 1
-        [alert addButtonWithTitle:@"Cancel"]; 
-        [alert show];
-        [alert release];
         
         // create and initialize a Label
 		CCLabelTTF *logo = [CCLabelTTF labelWithString:@"*Book Name*" fontName:@"Marker Felt" fontSize:64];
@@ -144,32 +138,61 @@
 // The button index will allow us to use logic triggered by button's clicks
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0)
+    if (buttonIndex == 0) // if user wants to resume
     {
-        // Yes, do something
+        PageOneScene *pageOneScene = [PageOneScene node];
+        [[CCDirector sharedDirector] replaceScene:pageOneScene];
     }
-    else if (buttonIndex == 1)
+    else if (buttonIndex == 1) // if user wants to start over
     {
-        // No
+        PageOneScene *pageOneScene = [PageOneScene node];
+        [[CCDirector sharedDirector] replaceScene:pageOneScene];
     }
+    else if (buttonIndex == 2) // cancel (stay on main menu)
+    {
+        NSLog(@"Cancel button to UIAlertView was touched");
+    }
+}
+
+- (void) promptToResumeOrStartOver
+{
+    extern BOOL isInBook;
+    NSLog(@"%s", (isInBook)?"true":"false");
+    PageOneScene *action = [[PageOneScene alloc]init];
+    [action removeUserFromBook];
+    NSLog(@"%s", (isInBook)?"true":"false");
+    
+    
+    // UIAlertView usage
+    UIAlertView *alert = [[UIAlertView alloc] init];
+    [alert setTitle:@"Would you like to resume where you left off?"];
+    [alert setDelegate:self];
+    [alert addButtonWithTitle:@"Resume"]; // button index 0
+    [alert addButtonWithTitle:@"Start Over"]; // button index 1
+    [alert addButtonWithTitle:@"Cancel"]; 
+    [alert show];
+    [alert release];
 }
 
 - (void) setReadToMeFlagAndGoToBook: (CCMenuItem *) menuitem 
 {
-    PageOneScene *pageOneScene = [PageOneScene node];
-    [[CCDirector sharedDirector] replaceScene:pageOneScene];
+    [self promptToResumeOrStartOver];
 }
 
 - (void) setReadItMyselfFlagAndGoToBook: (CCMenuItem *) menuitem 
 {
-    PageOneScene *pageOneScene = [PageOneScene node];
-    [[CCDirector sharedDirector] replaceScene:pageOneScene];
+    [self promptToResumeOrStartOver];
+    
+    // PageOneScene *pageOneScene = [PageOneScene node];
+    // [[CCDirector sharedDirector] replaceScene:pageOneScene];
 }
 
 - (void) setAutoPlayFlagAndGoToBook: (CCMenuItem *) menuitem 
 {
-    PageOneScene *pageOneScene = [PageOneScene node];
-    [[CCDirector sharedDirector] replaceScene:pageOneScene];
+    [self promptToResumeOrStartOver];
+    
+    // PageOneScene *pageOneScene = [PageOneScene node];
+    // [[CCDirector sharedDirector] replaceScene:pageOneScene];
 }
 
 

@@ -14,7 +14,7 @@
 		834D832D133C6E6D00ECA0F8 /* read_it_myself.png in Resources */ = {isa = PBXBuildFile; fileRef = 834D8327133C6E6D00ECA0F8 /* read_it_myself.png */; };
 		834D832E133C6E6D00ECA0F8 /* read_to_me_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 834D8328133C6E6D00ECA0F8 /* read_to_me_selected.png */; };
 		834D832F133C6E6D00ECA0F8 /* read_to_me.png in Resources */ = {isa = PBXBuildFile; fileRef = 834D8329133C6E6D00ECA0F8 /* read_to_me.png */; };
-		834D8332133C722D00ECA0F8 /* globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 834D8330133C722800ECA0F8 /* globals.m */; };
+		8366472C133D4054007A51C2 /* GlobalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366472B133D4054007A51C2 /* GlobalDataManager.m */; };
 		83B60B881339A8B000315898 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B60B871339A8B000315898 /* QuartzCore.framework */; };
 		83B60B8A1339A8B000315898 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B60B891339A8B000315898 /* OpenGLES.framework */; };
 		83B60B8C1339A8B000315898 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B60B8B1339A8B000315898 /* OpenAL.framework */; };
@@ -155,8 +155,9 @@
 		834D8327133C6E6D00ECA0F8 /* read_it_myself.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = read_it_myself.png; path = "../../../../Desktop/iphone app/read_it_myself.png"; sourceTree = "<group>"; };
 		834D8328133C6E6D00ECA0F8 /* read_to_me_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = read_to_me_selected.png; path = "../../../../Desktop/iphone app/read_to_me_selected.png"; sourceTree = "<group>"; };
 		834D8329133C6E6D00ECA0F8 /* read_to_me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = read_to_me.png; path = "../../../../Desktop/iphone app/read_to_me.png"; sourceTree = "<group>"; };
-		834D8330133C722800ECA0F8 /* globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globals.m; sourceTree = "<group>"; };
-		834D8333133C7B8D00ECA0F8 /* PageSceneHeaderFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PageSceneHeaderFiles.h; sourceTree = "<group>"; };
+		834D8333133C7B8D00ECA0F8 /* PageSceneHeaderFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSceneHeaderFiles.h; sourceTree = "<group>"; };
+		8366472A133D4053007A51C2 /* GlobalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDataManager.h; sourceTree = "<group>"; };
+		8366472B133D4054007A51C2 /* GlobalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalDataManager.m; sourceTree = "<group>"; };
 		83B60B831339A8B000315898 /* Swipe-Switch Scenes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe-Switch Scenes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B60B871339A8B000315898 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		83B60B891339A8B000315898 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -491,7 +492,8 @@
 		83B60B971339A8B000315898 /* Swipe-Switch Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				834D8330133C722800ECA0F8 /* globals.m */,
+				8366472A133D4053007A51C2 /* GlobalDataManager.h */,
+				8366472B133D4054007A51C2 /* GlobalDataManager.m */,
 				83B60D051339DA7500315898 /* PageOneScene.h */,
 				83B60D061339DA7500315898 /* PageOneScene.m */,
 				83B60D021339D75F00315898 /* PageTwoScene.h */,
@@ -999,7 +1001,7 @@
 				83B60D85133A7EC500315898 /* XGesture.m in Sources */,
 				83B60D88133A830300315898 /* Page.m in Sources */,
 				83B60D8C133A9F6500315898 /* PageThreeScene.m in Sources */,
-				834D8332133C722D00ECA0F8 /* globals.m in Sources */,
+				8366472C133D4054007A51C2 /* GlobalDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

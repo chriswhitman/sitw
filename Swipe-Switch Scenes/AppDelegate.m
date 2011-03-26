@@ -55,12 +55,7 @@
 	viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
 	viewController.wantsFullScreenLayout = YES;
 	
-	//
-	// Create the EAGLView manually
-	//  1. Create a RGB565 format. Alternative: RGBA8
-	//	2. depth format of 0 bit. Use 16 or 24 bit for 3d effects, like CCPageTurnTransition
-	//
-	//
+	// had to edit this code a bit to make the CCPageTurnTransition work properly
 	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
 								   pixelFormat:kEAGLColorFormatRGBA8	  // kEAGLColorFormatRGBA8
 								   depthFormat:GL_DEPTH_COMPONENT24_OES	  // GL_DEPTH_COMPONENT16_OES
