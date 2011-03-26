@@ -12,7 +12,6 @@
 //
 
 #import "cocos2d.h"
-
 #import "RootViewController.h"
 #import "GameConfig.h"
 

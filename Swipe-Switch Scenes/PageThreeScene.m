@@ -33,8 +33,6 @@
 {
     if( (self=[super initWithColor:ccc4(255,255,255,255)] )) {
         
-        // isInBook = TRUE;
-        
         // allow touches on scene
         self.isTouchEnabled=YES;
 		touched=FALSE;

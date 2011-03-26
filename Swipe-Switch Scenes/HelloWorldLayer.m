@@ -13,10 +13,9 @@
 #import "PageThreeScene.h"
 #import "CCTransition.h"
 #import "PageTwoScene.h"
+#import "GlobalDataManager.h"
 
-BOOL gUserInBook = FALSE;
-
-// HelloWorldLayer implementation
+// MainMenuScene implementation
 @implementation HelloWorldLayer
 
 +(CCScene *) scene
@@ -77,7 +76,7 @@ BOOL gUserInBook = FALSE;
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
         
-        PageOneScene *action = [[PageOneScene alloc]init];
+        GlobalDataManager *action = [[GlobalDataManager alloc]init];
         [action makeUserBeInBook];
         
         // add a background to the layer
@@ -158,7 +157,7 @@ BOOL gUserInBook = FALSE;
 {
     extern BOOL isInBook;
     NSLog(@"%s", (isInBook)?"true":"false");
-    PageOneScene *action = [[PageOneScene alloc]init];
+    GlobalDataManager *action = [[GlobalDataManager alloc]init];
     [action removeUserFromBook];
     NSLog(@"%s", (isInBook)?"true":"false");
     
