@@ -2,7 +2,7 @@
 #import "PageOneScene.h"
 #import "PageThreeScene.h"
 #import "CCTransition.h"
-#import "HelloWorldLayer.h"
+#import "MainMenuScene.h"
 #import "GlobalDataManager.h"
 
 @implementation PageTwoScene
