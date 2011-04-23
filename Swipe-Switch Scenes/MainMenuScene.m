@@ -81,9 +81,6 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
     if( (self=[super initWithColor:ccc4(255,255,255,255)] )) {
-        [[CCTextureMgr sharedTextureMgr] addImageAsync:@"Page1-ipad.jpg" target:self selector:@selector(textureLoaded:)];
-        [[CCTextureMgr sharedTextureMgr] addImageAsync:@"guts.png" target:self selector:@selector(textureLoaded:)];
-
         
         GlobalDataManager *action = [[GlobalDataManager alloc]init];
         [action setUserIsInBookFlag];
