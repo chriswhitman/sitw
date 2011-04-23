@@ -9,6 +9,8 @@
 
 // Import the interfaces
 #import "MainMenuScene.h"
+#import "PreBookScene.h"
+#import "IntroScene.h"
 #import "PageOneScene.h"
 #import "PageTwoScene.h"
 #import "PageThreeScene.h"
@@ -66,6 +68,9 @@
     // align our menu items
     [mainMenu alignItemsVertically];
     
+    // move menu to right
+    [mainMenu setPosition:ccp(950,384)];
+    
     // add menu to our scene
     [self addChild:mainMenu];
     
@@ -75,16 +80,71 @@
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
-	if( (self=[super init])) {
+    if( (self=[super initWithColor:ccc4(255,255,255,255)] )) {
+        [[CCTextureMgr sharedTextureMgr] addImageAsync:@"Page1-ipad.jpg" target:self selector:@selector(textureLoaded:)];
+        [[CCTextureMgr sharedTextureMgr] addImageAsync:@"guts.png" target:self selector:@selector(textureLoaded:)];
+
         
         GlobalDataManager *action = [[GlobalDataManager alloc]init];
         [action setUserIsInBookFlag];
         
+        // initialize window object
+        CGSize s = [[CCDirector sharedDirector] winSize];
+        
         // add a background to the layer
-        CCSprite* background = [CCSprite spriteWithFile:@"main_menu_background.png"];
+        CCSprite* background = [CCSprite spriteWithFile:@"main-menu-background-ipad.png"];
         background.tag = 1;
-        background.anchorPoint = CGPointMake(0, 0);
+        background.position = ccp(s.width/2, s.height/1.65);
+        // background.anchorPoint = ccp(0,0);
         [self addChild:background];
+  
+        id fadeIn = [[CCFadeOutBLTiles actionWithSize:ccg(16,12) duration:5] reverse];
+        
+        [background runAction:fadeIn];
+
+        
+        // add the top text to the layer
+        CCSprite* main_menu_logo = [CCSprite spriteWithFile:@"main-menu-logo-ipad.png"];
+        main_menu_logo.tag = 1;
+        main_menu_logo.opacity = 0.0;
+        main_menu_logo.position = ccp(s.width/2, s.height/4);
+        // background.anchorPoint = ccp(0,0);
+        [self addChild:main_menu_logo];
+        
+        // fade logo in
+        // delay first though
+        // don't forget to pass CCSequence nil since it's an array of objects (NSArray)
+        id logoDelay = [CCDelayTime actionWithDuration:2];
+        id fadeLogoIn = [CCFadeIn actionWithDuration:5];
+        id mainMenuSequence = [CCSequence actions:logoDelay, fadeLogoIn, nil];
+        
+        [main_menu_logo runAction:mainMenuSequence];
+        
+        // add bottom text to the layer
+        CCSprite* main_menu_bottom = [CCSprite spriteWithFile:@"main-menu-bottom-ipad.png"];
+        main_menu_bottom.tag = 1;
+        main_menu_bottom.position = ccp(s.width/2, s.height/15);
+        main_menu_bottom.opacity = 0.0;
+        [self addChild:main_menu_bottom];  
+        
+        id mainMenuBottomDelay = [CCDelayTime actionWithDuration:2];
+        id mainMenuBottomFadeIn = [CCFadeIn actionWithDuration:5];
+        id MainMenuBottomSeq = [CCSequence actions: mainMenuBottomDelay, mainMenuBottomFadeIn, nil];
+        
+        [main_menu_bottom runAction:MainMenuBottomSeq];
+        
+        // add bottom text to the layer
+        CCSprite* main_menu_top = [CCSprite spriteWithFile:@"main-menu-top-ipad.png"];
+        main_menu_top.tag = 1;
+        main_menu_top.position = ccp(s.width/2, s.height/1.05);
+        main_menu_top.opacity = 0.0;
+        [self addChild:main_menu_top];    
+        
+        id mainMenuTopDelay = [CCDelayTime actionWithDuration:2];
+        id mainMenuTopFadeIn = [CCFadeIn actionWithDuration:5];
+        id MainMenuTopSeq = [CCSequence actions: mainMenuTopDelay, mainMenuTopFadeIn, nil];
+        
+        [main_menu_top runAction:MainMenuTopSeq];
         
         // PARTICLE SYSTEM EMITTER SETUP /////////////////////////////////////////
         // request window size
@@ -116,7 +176,7 @@
         /// int scene = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
         
         // create and initialize a Label
-		CCLabelTTF *logo = [CCLabelTTF labelWithString:@"*Book Name*" fontName:@"Marker Felt" fontSize:64];
+		CCLabelTTF *logo = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:64];
 
 		// ask director the the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
@@ -146,8 +206,8 @@
         StoryStateManager *lastScene = [[StoryStateManager alloc] init];
         [lastScene resumeStoryToScene:lastSceneViewed];
     } else if (buttonIndex == 1) {
-        PageOneScene *pageOneScene = [PageOneScene node];
-        [[CCDirector sharedDirector] replaceScene:pageOneScene];
+        PreBookScene *preBookScene = [PreBookScene node];
+        [[CCDirector sharedDirector] replaceScene:preBookScene];
     } else if (buttonIndex == 2) {
         NSLog(@"Cancel button to UIAlertView was touched");
     }
@@ -161,7 +221,7 @@
     // check to see if the last viewed scene is the first scene of the book
     // if the last viewed scene is the first scene, skip the dialog/prompt 
     // and go directly to the first scene.
-    if (lastSceneViewed > 1) {
+    if (lastSceneViewed > 0) {
         // UIAlertView usage
         UIAlertView *alert = [[UIAlertView alloc] init];
         [alert setTitle:@"Would you like to resume where you left off?"];
@@ -175,7 +235,7 @@
         // initialize data for story state then load first scene 
         // with resumeStoryToScene:(integer) function
         StoryStateManager *lastScene = [[StoryStateManager alloc] init];
-        [lastScene resumeStoryToScene:1];
+        [lastScene resumeStoryToScene:-1];
     }
 }
 

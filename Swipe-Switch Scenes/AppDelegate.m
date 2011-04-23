@@ -40,6 +40,7 @@
 }
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
+    
 	// Init the window
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
@@ -63,6 +64,10 @@
     
 	// attach the openglView to the director
 	[director setOpenGLView:glView];
+    
+    // Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
+    if( ! [director enableRetinaDisplay:YES] )
+        CCLOG(@"Retina Display Not supported");
 	
 //	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 //	if( ! [director enableRetinaDisplay:YES] )

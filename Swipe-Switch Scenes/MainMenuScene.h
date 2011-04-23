@@ -15,7 +15,7 @@
 
 
 // MainMenuLayer
-@interface MainMenuLayer : CCLayer
+@interface MainMenuLayer : CCColorLayer
 {
     CCParticleSystem *emitter;
 }

@@ -6,6 +6,8 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "PreBookScene.h"
+#import "IntroScene.h"
 #import "PageOneScene.h"
 #import "PageTwoScene.h"
 #import "PageThreeScene.h"
@@ -20,9 +22,21 @@
 - (void) resumeStoryToScene:(int)sceneToGoTo{
     
     // sets scene to first scene if it's zero
-    (sceneToGoTo < 2) ? sceneToGoTo = 1 : (sceneToGoTo = sceneToGoTo);
+    (sceneToGoTo < 1) ? sceneToGoTo = -1 : (sceneToGoTo = sceneToGoTo);
 
     switch (sceneToGoTo) {
+        case -1:
+        {
+            PreBookScene *preBookScene = [PreBookScene node];
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn transitionWithDuration:1.0 scene:preBookScene]];
+            break;
+        }
+        case 0:
+        {
+            IntroScene *introScene = [IntroScene node];
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn transitionWithDuration:1.0 scene:introScene]];
+            break;
+        }
         case 1:
         {
             PageOneScene *pageOneScene = [PageOneScene node];
