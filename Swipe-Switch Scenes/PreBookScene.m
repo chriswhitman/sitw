@@ -47,7 +47,7 @@
         
         // set out current scene global (gCurrentScene) to the current scene
         GlobalDataManager *data = [[GlobalDataManager alloc] init];
-        [data setCurrentScene:1];
+        [data setCurrentScene:-1];
         
         // set last viewed scene global variable (gLastViewedScene gets set)
         GlobalDataManager *data_last_viewed = [[GlobalDataManager alloc] init];

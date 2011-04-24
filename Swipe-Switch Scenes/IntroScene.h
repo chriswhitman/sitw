@@ -14,9 +14,7 @@
     bool touched;
     
     CCLabelTTF *_lineTwoText;
-    
     CCLabelTTF *_lineThreeText;
-    
     CCLabelTTF *_label;
     
 }

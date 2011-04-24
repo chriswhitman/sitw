@@ -18,6 +18,8 @@
 - (void) setStoryPlayMode:(NSString *)storyPlayMode;
 - (void) setCurrentScene:(int)currentScene;
 - (void) setLastViewedScene:(int)lastViewedScene;
+- (void) increaseSwipeCount;
+- (void) clearSwipeCount;
 
 @end
 

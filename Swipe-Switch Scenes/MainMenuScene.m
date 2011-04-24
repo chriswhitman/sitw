@@ -6,7 +6,6 @@
 //  Copyright __MyCompanyName__ 2011. All rights reserved.
 //
 
-
 // Import the interfaces
 #import "MainMenuScene.h"
 #import "PreBookScene.h"
@@ -17,6 +16,7 @@
 #import "CCTransition.h"
 #import "GlobalDataManager.h"
 #import "GameStateManager.h"
+
 
 // MainMenuScene implementation
 @implementation MainMenuLayer
@@ -80,7 +80,10 @@
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
-    if( (self=[super initWithColor:ccc4(255,255,255,255)] )) {
+    if( (self=[super  initWithColor:ccc4(255, 255, 255, 255)] )) {
+        //[[CCTextureCache sharedTextureCache] addImageAsync:@"" target:self selector:@selector(textureLoaded:)];
+        //[[CCTextureCache sharedTextureCache] addImageAsync:@"Page1-ipad.jpeg" target:self selector:@selector(:)];
+        [[CCTextureCache sharedTextureCache] addImageAsync:@"Page1-ipad.jpeg" target:self selector:@selector(imageLoaded:)];
         
         GlobalDataManager *action = [[GlobalDataManager alloc]init];
         [action setUserIsInBookFlag];
@@ -91,11 +94,12 @@
         // add a background to the layer
         CCSprite* background = [CCSprite spriteWithFile:@"main-menu-background-ipad.png"];
         background.tag = 1;
+        background.opacity = 0.0;
         background.position = ccp(s.width/2, s.height/1.65);
         // background.anchorPoint = ccp(0,0);
         [self addChild:background];
   
-        id fadeIn = [[CCFadeOutBLTiles actionWithSize:ccg(16,12) duration:5] reverse];
+        id fadeIn = [CCFadeIn actionWithDuration:3];
         
         [background runAction:fadeIn];
 
@@ -111,8 +115,8 @@
         // fade logo in
         // delay first though
         // don't forget to pass CCSequence nil since it's an array of objects (NSArray)
-        id logoDelay = [CCDelayTime actionWithDuration:2];
-        id fadeLogoIn = [CCFadeIn actionWithDuration:5];
+        id logoDelay = [CCDelayTime actionWithDuration:.8];
+        id fadeLogoIn = [CCFadeIn actionWithDuration:3];
         id mainMenuSequence = [CCSequence actions:logoDelay, fadeLogoIn, nil];
         
         [main_menu_logo runAction:mainMenuSequence];
@@ -124,8 +128,8 @@
         main_menu_bottom.opacity = 0.0;
         [self addChild:main_menu_bottom];  
         
-        id mainMenuBottomDelay = [CCDelayTime actionWithDuration:2];
-        id mainMenuBottomFadeIn = [CCFadeIn actionWithDuration:5];
+        id mainMenuBottomDelay = [CCDelayTime actionWithDuration:.8];
+        id mainMenuBottomFadeIn = [CCFadeIn actionWithDuration:3];
         id MainMenuBottomSeq = [CCSequence actions: mainMenuBottomDelay, mainMenuBottomFadeIn, nil];
         
         [main_menu_bottom runAction:MainMenuBottomSeq];
@@ -137,8 +141,8 @@
         main_menu_top.opacity = 0.0;
         [self addChild:main_menu_top];    
         
-        id mainMenuTopDelay = [CCDelayTime actionWithDuration:2];
-        id mainMenuTopFadeIn = [CCFadeIn actionWithDuration:5];
+        id mainMenuTopDelay = [CCDelayTime actionWithDuration:.8];
+        id mainMenuTopFadeIn = [CCFadeIn actionWithDuration:3];
         id MainMenuTopSeq = [CCSequence actions: mainMenuTopDelay, mainMenuTopFadeIn, nil];
         
         [main_menu_top runAction:MainMenuTopSeq];
@@ -185,8 +189,6 @@
 		[self addChild: logo];
         
         [self setUpMenus];
-
-
 	}
 	return self;
 }
@@ -218,7 +220,7 @@
     // check to see if the last viewed scene is the first scene of the book
     // if the last viewed scene is the first scene, skip the dialog/prompt 
     // and go directly to the first scene.
-    if (lastSceneViewed > 0) {
+    if (lastSceneViewed > -1) {
         // UIAlertView usage
         UIAlertView *alert = [[UIAlertView alloc] init];
         [alert setTitle:@"Would you like to resume where you left off?"];
@@ -264,6 +266,9 @@
     [self promptToResumeOrStartOver];
 }
 
+-(void) imageLoaded: (CCTexture2D*) sitw {
+
+}
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc

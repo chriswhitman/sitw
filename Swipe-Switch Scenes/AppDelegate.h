@@ -13,6 +13,7 @@
 BOOL gIsInBook = FALSE;
 int gCurrentScene;
 int gLastViewedScene;
+int gCurrentSwipeCount = 0;
 NSString* gStoryPlayMode;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
