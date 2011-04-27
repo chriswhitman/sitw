@@ -12,6 +12,8 @@
 @interface PageTwoLayer : CCColorLayer <GestureComplete> {
     bool touched;
     
+    int zoomIndex;
+    
     CCLabelTTF *_label;
 }
 @property (nonatomic, retain) CCLabelTTF *label;
@@ -25,4 +27,6 @@
 +(id) scene;
 -(void) swipeRightComplete;
 -(void) swipeLeftComplete;
+-(void) turnDepthTestOn;
+-(void) turnDepthTestOff;
 @end

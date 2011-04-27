@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		832D6A0B136857C0003A5391 /* Page2Bluejay-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D6A09136857C0003A5391 /* Page2Bluejay-ipad.png */; };
+		832D6A0C136857C0003A5391 /* Page2Deer-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D6A0A136857C0003A5391 /* Page2Deer-ipad.png */; };
+		832D6A0E13685A55003A5391 /* Page2WordWrap1-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D6A0D13685A55003A5391 /* Page2WordWrap1-ipad.png */; };
 		83382EDC1363779A006AF38F /* Page1-ipad-small.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 83382EDB1363779A006AF38F /* Page1-ipad-small.jpeg */; };
 		83382EDE13638D0E006AF38F /* WhiteBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 83382EDD13638D0E006AF38F /* WhiteBg.png */; };
+		83382EE11365FAAD006AF38F /* Page2Bluejay-ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83382EDF1365FAAC006AF38F /* Page2Bluejay-ipad.jpg */; };
+		83382EE21365FAAD006AF38F /* Page2Deer-ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83382EE01365FAAD006AF38F /* Page2Deer-ipad.jpg */; };
+		83382EEA136780AE006AF38F /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83382EE9136780AE006AF38F /* dist.plist */; };
 		834D8319133C641A00ECA0F8 /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 834D8318133C641A00ECA0F8 /* snow.png */; };
 		834D832A133C6E6D00ECA0F8 /* auto_play_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 834D8324133C6E6D00ECA0F8 /* auto_play_selected.png */; };
 		834D832B133C6E6D00ECA0F8 /* auto_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 834D8325133C6E6D00ECA0F8 /* auto_play.png */; };
@@ -163,8 +169,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		832D6A09136857C0003A5391 /* Page2Bluejay-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Page2Bluejay-ipad.png"; path = "../../../../Desktop/work/SITW App/Images/Page2Bluejay-ipad.png"; sourceTree = "<group>"; };
+		832D6A0A136857C0003A5391 /* Page2Deer-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Page2Deer-ipad.png"; path = "../../../../Desktop/work/SITW App/Images/Page2Deer-ipad.png"; sourceTree = "<group>"; };
+		832D6A0D13685A55003A5391 /* Page2WordWrap1-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Page2WordWrap1-ipad.png"; path = "../../../../Desktop/work/SITW App/Images/Page2WordWrap1-ipad.png"; sourceTree = "<group>"; };
 		83382EDB1363779A006AF38F /* Page1-ipad-small.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Page1-ipad-small.jpeg"; path = "../../../../Desktop/work/SITW App/Images/Page1-ipad-small.jpeg"; sourceTree = "<group>"; };
 		83382EDD13638D0E006AF38F /* WhiteBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteBg.png; path = "../../../../Desktop/work/SITW App/Images/WhiteBg.png"; sourceTree = "<group>"; };
+		83382EDF1365FAAC006AF38F /* Page2Bluejay-ipad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Page2Bluejay-ipad.jpg"; path = "../../../../Desktop/work/SITW App/Images/Page2Bluejay-ipad.jpg"; sourceTree = "<group>"; };
+		83382EE01365FAAD006AF38F /* Page2Deer-ipad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Page2Deer-ipad.jpg"; path = "../../../../Desktop/work/SITW App/Images/Page2Deer-ipad.jpg"; sourceTree = "<group>"; };
+		83382EE9136780AE006AF38F /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dist.plist; path = "Stranger in the Woods Storybook.xcodeproj/dist.plist"; sourceTree = "<group>"; };
 		834D8318133C641A00ECA0F8 /* snow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snow.png; path = ../../../../Desktop/snow.png; sourceTree = "<group>"; };
 		834D8324133C6E6D00ECA0F8 /* auto_play_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = auto_play_selected.png; path = "../../../../Desktop/iphone app/auto_play_selected.png"; sourceTree = "<group>"; };
 		834D8325133C6E6D00ECA0F8 /* auto_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = auto_play.png; path = "../../../../Desktop/iphone app/auto_play.png"; sourceTree = "<group>"; };
@@ -492,6 +504,7 @@
 		83B60B781339A8B000315898 = {
 			isa = PBXGroup;
 			children = (
+				83382EE9136780AE006AF38F /* dist.plist */,
 				83B60B971339A8B000315898 /* Classes */,
 				83B60B861339A8B000315898 /* Frameworks */,
 				83B60B841339A8B000315898 /* Products */,
@@ -564,6 +577,11 @@
 		83B60B981339A8B100315898 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				832D6A0D13685A55003A5391 /* Page2WordWrap1-ipad.png */,
+				832D6A09136857C0003A5391 /* Page2Bluejay-ipad.png */,
+				832D6A0A136857C0003A5391 /* Page2Deer-ipad.png */,
+				83382EDF1365FAAC006AF38F /* Page2Bluejay-ipad.jpg */,
+				83382EE01365FAAD006AF38F /* Page2Deer-ipad.jpg */,
 				83382EDD13638D0E006AF38F /* WhiteBg.png */,
 				83382EDB1363779A006AF38F /* Page1-ipad-small.jpeg */,
 				83F1F35213629CAF006993D5 /* Page1-ipad.jpeg */,
@@ -945,6 +963,12 @@
 				83F1F35313629CAF006993D5 /* Page1-ipad.jpeg in Resources */,
 				83382EDC1363779A006AF38F /* Page1-ipad-small.jpeg in Resources */,
 				83382EDE13638D0E006AF38F /* WhiteBg.png in Resources */,
+				83382EE11365FAAD006AF38F /* Page2Bluejay-ipad.jpg in Resources */,
+				83382EE21365FAAD006AF38F /* Page2Deer-ipad.jpg in Resources */,
+				83382EEA136780AE006AF38F /* dist.plist in Resources */,
+				832D6A0B136857C0003A5391 /* Page2Bluejay-ipad.png in Resources */,
+				832D6A0C136857C0003A5391 /* Page2Deer-ipad.png in Resources */,
+				832D6A0E13685A55003A5391 /* Page2WordWrap1-ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,7 +1101,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Christopher Whitman (952295X5AK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Whitman (952295X5AK)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1089,6 +1115,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "95E5CC1A-A31F-46EB-97D5-586084ABC4DE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95E5CC1A-A31F-46EB-97D5-586084ABC4DE";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1097,7 +1125,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Christopher Whitman (952295X5AK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Whitman (952295X5AK)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -1105,6 +1135,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "95E5CC1A-A31F-46EB-97D5-586084ABC4DE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95E5CC1A-A31F-46EB-97D5-586084ABC4DE";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1113,6 +1145,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Christopher Whitman (952295X5AK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Whitman (952295X5AK)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1122,7 +1156,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "95E5CC1A-A31F-46EB-97D5-586084ABC4DE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95E5CC1A-A31F-46EB-97D5-586084ABC4DE";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1131,6 +1167,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Christopher Whitman (952295X5AK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Whitman (952295X5AK)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swipe-Switch Scenes/Prefix.pch";
@@ -1139,7 +1177,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "95E5CC1A-A31F-46EB-97D5-586084ABC4DE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95E5CC1A-A31F-46EB-97D5-586084ABC4DE";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -46,6 +46,8 @@
         GlobalDataManager *data_last_viewed = [[GlobalDataManager alloc] init];
         [data_last_viewed setLastViewedScene:3];
         
+        [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"lastViewedScene"];
+        
         #include "GestureConfig.h"
         
         CGSize winSize = [[CCDirector sharedDirector] winSize];
@@ -53,8 +55,6 @@
         _label.color = ccc3(0,0,0);
         _label.position = ccp(winSize.width/2, winSize.height/2);
         [self addChild:_label];
-        
-        [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"lastViewedScene"];
         
         int currentScene = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
         NSLog(@"Current scene retrieved from NSUserDefaults: %i", currentScene);
