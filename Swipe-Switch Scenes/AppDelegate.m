@@ -12,6 +12,10 @@
 #import "GameConfig.h"
 #import "MainMenuScene.h"
 #import "RootViewController.h"
+#import "PreloaderScene.h"
+#import "PageOneScene.h"
+
+#define CC_RETINA_DISPLAY_SUPPORT 0
 
 @implementation AppDelegate
 
@@ -25,21 +29,23 @@
 	// Uncomment the following code if you Application only supports landscape mode
 	//
 #if GAME_AUTOROTATION == kGameAutorotationUIViewController
-
-//	CC_ENABLE_DEFAULT_GL_STATES();
-//	CCDirector *director = [CCDirector sharedDirector];
-//	CGSize size = [director winSize];
-//	CCSprite *sprite = [CCSprite spriteWithFile:@"Default.png"];
-//	sprite.position = ccp(size.width/2, size.height/2);
-//	sprite.rotation = -90;
-//	[sprite visit];
-//	[[director openGLView] swapBuffers];
-//	CC_ENABLE_DEFAULT_GL_STATES();
+    
+    	CC_ENABLE_DEFAULT_GL_STATES();
+    	CCDirector *director = [CCDirector sharedDirector];
+    	CGSize size = [director winSize];
+    	CCSprite *sprite = [CCSprite spriteWithFile:@"Default.png"];
+    	sprite.position = ccp(size.width/2, size.height/2);
+    	sprite.rotation = -90;
+    	[sprite visit];
+    	[[director openGLView] swapBuffers];
+    	CC_ENABLE_DEFAULT_GL_STATES();
 	
 #endif // GAME_AUTOROTATION == kGameAutorotationUIViewController	
 }
+
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
+    
     
 	// Init the window
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -105,12 +111,14 @@
 	// You can change anytime.
 	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
 
-	
-	// Removes the startup flicker
+    // Removes the startup flicker
 	[self removeStartupFlicker];
 	
-	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
+    // Run the preloader scene
+    //[[CCDirector sharedDirector] runWithScene: [PageOneScene scene]];
+	
+    // Runs main menu scene, commented out to use preloader scene instead
+    [[CCDirector sharedDirector] runWithScene: [PreloaderLayer scene]];
 }
 
 

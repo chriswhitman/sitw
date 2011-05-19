@@ -7,9 +7,9 @@
 //
 
 // gesture recognition configuration
-[Gestures sharedGestures].swipeTolerance = 220;
+[Gestures sharedGestures].swipeTolerance = 100;
 [Gestures sharedGestures].pointResetLimit = 10;
 [Gestures sharedGestures].delegate = self;
-[Gestures sharedGestures].useX = NO;
+[Gestures sharedGestures].useX = YES;
 [Gestures sharedGestures].useCircle = NO;
 [Gestures sharedGestures].useSquare = NO;

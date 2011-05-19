@@ -10,6 +10,9 @@
 @implementation PageThreeScene
 @synthesize layer = _layer;
 
+int swipeCount3 = 0;
+bool isForwardSwipe;
+
 - (id)init {
     
     if ((self = [super init])) {
@@ -64,21 +67,40 @@
 
 #include "GestureSetup.h"
 
+- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    swipeCount3++;
+    
+    NSLog(@"Swipe count: %i", swipeCount3);
+    
+    if(isForwardSwipe){
+        NSLog(@"Forward swipe");
+    } else {
+        NSLog(@"Backward swipe");
+    }
+    
+	NSLog(@"Touch Ended:%@", touch);
+}
+
+
 -(void) swipeRightComplete{
+    isForwardSwipe = NO;
+    
     NSLog(@"Swipe right.");
     if(!touched){
         touched=!touched;
         
-        PageTwoScene *pageTwoScene = [PageTwoScene node];
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn transitionWithDuration:1.0 scene:pageTwoScene backwards:TRUE]];
+//        PageTwoScene *pageTwoScene = [PageTwoScene node];
+//        [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn transitionWithDuration:1.0 scene:pageTwoScene backwards:TRUE]];
     }
 }
 
 -(void) swipeLeftComplete{
+    isForwardSwipe = YES;
+    
     NSLog(@"Swipe left.");
     if (!touched) {
         touched=!touched;
-            
     }
 }
 

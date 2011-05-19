@@ -5,16 +5,20 @@
 #import "CCTransitionPageTurn.h"
 #import "MainMenuScene.h"
 #import "GlobalDataManager.h"
+#import "InStoryMenuManager.h"
 
 int swipeCount = 0;
+bool isForwardSwipe;
 
 @implementation PageOneScene
 @synthesize layer = _layer;
+@synthesize menuLayer = _menuLayer;
 
 
 - (id)init {
     
     if ((self = [super init])) {
+        self.menuLayer = [PageOneMenuLayer node];
         self.layer = [PageOneLayer node];
         [self addChild:_layer];
         
@@ -29,6 +33,24 @@ int swipeCount = 0;
     [super dealloc];
 }
 @end
+
+@implementation PageOneMenuLayer
+
+-(id) init
+{
+    if( (self=[super initWithColor:ccc4(255,255,255,255)] )) {
+        
+        CCSprite* whiteBg = [CCSprite spriteWithFile:@"1024Filler-ipad.png"];
+        //backgroundBluejay.tag = 1;
+        // backgroundBluejay.anchorPoint = ccp(0,0);
+        [whiteBg setScale:1.0]; 
+        whiteBg.position = ccp(512, 384);
+        // [self addChild:whiteBg];
+    }	
+    return self;
+}
+@end
+
 
 @implementation PageOneLayer
 
@@ -79,8 +101,13 @@ int swipeCount = 0;
         [background setScale:1.0]; 
         background.position = ccp(s.width/2, s.height/2);
         [self addChild:background];
-        
+        // allow touches on scene
+        self.isTouchEnabled=YES;
+		touched=FALSE;
         [self showP1];
+        
+        // place back home button
+        #include "PlaceBackHomeButton.h"
         
         // for panning/zooming simultaneously      
         //id action = [CCSpawn actions:
@@ -106,7 +133,109 @@ int swipeCount = 0;
 
 #include "GestureSetup.h"
 
+- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    NSLog(@"Swipe count: %i", swipeCount);
+    
 
+    [[CCDirector sharedDirector] setDepthTest:YES]; 
+    
+    // forward swipe, moves story forward
+    // maybe debug and check direction of swipe
+    if(isForwardSwipe)
+    {
+        
+        swipeCount++;
+        
+        switch (swipeCount)
+        {
+            case 1:
+            {
+                [self hideP1];
+                
+                [self showP2];
+                
+                break;
+            }
+            case 2:
+            {
+                [self hideP2];
+                
+                [self showP3];
+                
+                break;
+            }
+            case 3:
+            {
+                [self hideP3];
+                
+                [self showP4];
+                
+                break;
+            }
+            default:
+                break;
+        }
+        
+        if (swipeCount == 4)
+        {        
+            swipeCount = 0;
+            
+            PageTwoScene *pageTwoScene = [PageTwoScene node];
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn 
+                                                       transitionWithDuration:1.0 
+                                                       scene:pageTwoScene 
+                                                       backwards:FALSE]];
+            
+        }
+    // backward swipe, moves story backward
+    } else {
+        swipeCount--;
+        
+        switch (swipeCount)
+        {
+            case 0:
+            {
+                [self hideP2];
+                
+                [self showP1];
+                
+                break;
+            }
+            case 1:
+            {   
+                [self hideP3];
+                
+                [self showP2];
+                
+                break;
+            }
+            case 2:
+            {
+                break;
+            }
+            default:
+                break;
+        }
+        
+        if (swipeCount == -1)
+        {
+            swipeCount = 0;
+            
+            IntroScene *introScene = [IntroScene node];
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn 
+                                                       transitionWithDuration:1.0 
+                                                       scene:introScene 
+                                                       backwards:TRUE]];
+        }
+        
+    }
+    
+	NSLog(@"Touch Ended:%@", touch);
+}
+
+
+#include "addBackHomeButton.h"
 
 // message for showing first paragraph (P1)
 - (void) showP1{
@@ -138,8 +267,8 @@ int swipeCount = 0;
     [self addChild:_p1l4text];
 
     // make an object out of the action for reuse
-    id delay1 = [CCDelayTime actionWithDuration:0.650 ];
-    id fadeIn1 = [CCFadeIn actionWithDuration:0.600];
+    id delay1 = [CCDelayTime actionWithDuration:0.320 ];
+    id fadeIn1 = [CCFadeIn actionWithDuration:0.250];
     id fadeP1_1 = [CCSequence actions:delay1, fadeIn1, nil];
                     
     [_p1l1text runAction:fadeP1_1];
@@ -152,6 +281,7 @@ int swipeCount = 0;
     
 }
 - (void) showP2{
+    
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     
     // let's play with our properties!
@@ -175,8 +305,8 @@ int swipeCount = 0;
     
     
     // make an object out of the action for reuse
-    id delay2 = [CCDelayTime actionWithDuration:0.650];
-    id fadeIn2 = [CCFadeIn actionWithDuration:0.600];
+    id delay2 = [CCDelayTime actionWithDuration:0.450];
+    id fadeIn2 = [CCFadeIn actionWithDuration:0.250];
     id fadeP2 = [CCSequence actions:delay2, fadeIn2, nil];
     
     [_p2l1text runAction:fadeP2];
@@ -188,7 +318,7 @@ int swipeCount = 0;
     
     // let's play with our properties!
     self.p3l1text = [CCLabelTTF labelWithString:@"Daybreak came" fontName:@"PopplPontifexBE-Regular" fontSize:21];
-    _p3l1text.position = ccp(winSize.width/4.1, winSize.height/5.0);
+    _p3l1text.position = ccp(winSize.width/4.6, winSize.height/5.0);
     _p3l1text.color = ccc3(0,0,0);
     _p3l1text.opacity = 0.0;
     [self addChild:_p3l1text];
@@ -219,8 +349,8 @@ int swipeCount = 0;
     
     
     // make an object out of the action for reuse
-    id delay3 = [CCDelayTime actionWithDuration:0.650];
-    id fadeIn3 = [CCFadeIn actionWithDuration:0.600];
+    id delay3 = [CCDelayTime actionWithDuration:0.450];
+    id fadeIn3 = [CCFadeIn actionWithDuration:0.250];
     id fadeP3 = [CCSequence actions:delay3, fadeIn3, nil];
     
     [_p3l1text runAction:fadeP3];
@@ -247,8 +377,8 @@ int swipeCount = 0;
     [self addChild:_p4l2text];
     
     // make an object out of the action for reuse
-    id delay4 = [CCDelayTime actionWithDuration:0.650];
-    id fadeIn4 = [CCFadeIn actionWithDuration:0.600];
+    id delay4 = [CCDelayTime actionWithDuration:0.450];
+    id fadeIn4 = [CCFadeIn actionWithDuration:0.250];
     id fadeP4 = [CCSequence actions:delay4, fadeIn4, nil];
     
     [_p4l1text runAction:fadeP4];
@@ -258,7 +388,7 @@ int swipeCount = 0;
 // messages for hiding our paragraphs
 - (void) hideP1{
     // make an object out of the action for reuse
-    id fadeOut = [CCFadeOut actionWithDuration:0.600];
+    id fadeOut = [CCFadeOut actionWithDuration:0.250];
     
     [_p1l1text runAction:fadeOut];
     [_p1l2text runAction:[[fadeOut copy] autorelease]];
@@ -268,7 +398,7 @@ int swipeCount = 0;
 }
 - (void) hideP2{
     // make an object out of the action for reuse
-    id fadeOut2 = [CCFadeOut actionWithDuration:0.600];
+    id fadeOut2 = [CCFadeOut actionWithDuration:0.250];
     
     [_p2l1text runAction:fadeOut2];
     [_p2l2text runAction:[[fadeOut2 copy] autorelease]];
@@ -276,7 +406,7 @@ int swipeCount = 0;
 }
 - (void) hideP3{
     // make an object out of the action for reuse
-    id fadeOut3 = [CCFadeOut actionWithDuration:0.600];
+    id fadeOut3 = [CCFadeOut actionWithDuration:0.250];
     
     [_p3l1text runAction:fadeOut3];
     [_p3l2text runAction:[[fadeOut3 copy] autorelease]];
@@ -286,7 +416,7 @@ int swipeCount = 0;
 }
 - (void) hideP4{
     // make an object out of the action for reuse
-    id fadeOut4 = [CCFadeOut actionWithDuration:0.600];
+    id fadeOut4 = [CCFadeOut actionWithDuration:0.250];
     
     [_p4l1text runAction:fadeOut4];
     [_p4l2text runAction:[[fadeOut4 copy] autorelease]];
@@ -294,123 +424,33 @@ int swipeCount = 0;
 
 
 -(void) swipeRightComplete{
-    if (!touched) {
+    if (!touched)
+    {
+        touched=!touched;
+    }
+    
+    isForwardSwipe = NO;
+}
+
+-(void) swipeLeftComplete
+{
+    if (!touched)
+    {
         touched=!touched;
     }        
     
-    swipeCount--;
-    
-    switch (swipeCount) {
-        case 0:
-        {
-            [self hideP2];
-            
-            [self showP1];
-            
-            self.isTouchEnabled = TRUE;
-            
-            break;
-        }
-        case 1:
-        {   
-            [self hideP3];
-
-            [self showP2];
-            
-            self.isTouchEnabled = TRUE;
-            
-            break;
-        }
-        case 2:
-        {
-            break;
-        }
-        default:
-            break;
-    }
-    
-    if (swipeCount == -1) {
-        IntroScene *introScene = [IntroScene node];
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn 
-                                                   transitionWithDuration:1.0 
-                                                   scene:introScene 
-                                                   backwards:TRUE]];
-        
-        swipeCount = 0;
-    }
-    
-    NSLog(@"Swipe count: %i", swipeCount);
-
+    isForwardSwipe = YES;
 }
 
--(void) swipeLeftComplete{
-    if (!touched) {
-        touched=!touched;
-    }        
-    
-    self.isTouchEnabled = FALSE;
-    
-    swipeCount++;
-    
-    switch (swipeCount) {
-        case 1:
-        {
-            [self hideP1];
-            
-            [self showP2];
-            
-            self.isTouchEnabled = TRUE;
-            
-            break;
-        }
-        case 2:
-        {
-            [self hideP2];
-            
-            [self showP3];
-            
-            self.isTouchEnabled = TRUE;
-            
-            break;
-        }
-        case 3:
-        {
-            [self hideP3];
-            
-            [self showP4];
-            
-            self.isTouchEnabled = TRUE;
-            break;
-        }
-        default:
-            break;
-    }
-    
-    if (swipeCount == 4) {
-        PageTwoScene *pageTwoScene = [PageTwoScene node];
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn 
-                                                   transitionWithDuration:1.0 
-                                                   scene:pageTwoScene 
-                                                   backwards:FALSE]];
-        GlobalDataManager *data = [[GlobalDataManager alloc] init];
-        [data clearSwipeCount];
-    }
-
-    NSLog(@"Swipe count: %i", swipeCount);
-}
-
-- (void) enableSwipes {
-    self.isTouchEnabled = TRUE;
-}
-
-- (void)dealloc {
+- (void)dealloc
+{
     [_label release];
     _label = nil;
     
-    [[CCTextureCache sharedTextureCache] removeUnusedTextures];
-	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
-	[[CCDirector sharedDirector] purgeCachedData];
-	[self removeAllChildrenWithCleanup:YES];
+    // [[CCTextureCache sharedTextureCache] removeUnusedTextures];
+	// [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
+	// [[CCDirector sharedDirector] purgeCachedData];
+	// [self removeAllChildrenWithCleanup:YES];
 
     [super dealloc];
 }

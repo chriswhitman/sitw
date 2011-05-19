@@ -34,6 +34,14 @@
         case 0:
         {
             IntroScene *introScene = [IntroScene node];
+            
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.2];
+            [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:introScene];
+            [UIView commitAnimations];
+            
+
+            
             [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn transitionWithDuration:1.0 scene:introScene]];
             break;
         }

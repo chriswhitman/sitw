@@ -39,37 +39,49 @@
 // set up our menus
 - (void) setUpMenus
 {
+    
     // menu item to read the book
     CCMenuItemImage *menuItemReadToMe = [CCMenuItemImage 
-                                             itemFromNormalImage:@"read_to_me.png"
-                                             selectedImage:@"read_to_me_selected.png"
+                                             itemFromNormalImage:@"readToMe-ipad.png"
+                                             selectedImage:@"readToMe-hover-ipad.png"
                                              target:self
                                              selector:@selector(setReadToMeFlagAndGoToBook:)];
-
+    
 
     // menu item to read the book
     CCMenuItemImage *menuItemReadItMyself = [CCMenuItemImage 
-                                                itemFromNormalImage:@"read_to_me.png"
-                                                selectedImage:@"read_to_me_selected.png"
+                                                itemFromNormalImage:@"readItMyself-ipad.png"
+                                                selectedImage:@"readItMyself-hover-ipad.png"
                                                 target:self
                                                 selector:@selector(setReadItMyselfFlagAndGoToBook:)];
     
     // menu item to read the book
     CCMenuItemImage *menuItemAutoPlay = [CCMenuItemImage 
-                                             itemFromNormalImage:@"auto_play.png"
-                                             selectedImage:@"auto_play_selected.png"
+                                             itemFromNormalImage:@"autoplay-ipad.png"
+                                             selectedImage:@"autoplay-hover-ipad.png"
                                              target:self
                                              selector:@selector(setAutoPlayFlagAndGoToBook:)];
     
     
+    // menu item to build a snowman game
+    CCMenuItemImage *menuItemBuildASnowman = [CCMenuItemImage 
+                                         itemFromNormalImage:@"buildASnowman-ipad.png"
+                                         selectedImage:@"buildASnowman-hover-ipad.png"
+                                         target:self
+                                         selector:@selector(setAutoPlayFlagAndGoToBook:)];
+    
+    
     // create an instance of our menu
-    CCMenu * mainMenu = [CCMenu menuWithItems:menuItemReadToMe, menuItemReadItMyself, menuItemAutoPlay, nil];
+    CCMenu * mainMenu = [CCMenu menuWithItems:menuItemReadToMe, menuItemReadItMyself, menuItemAutoPlay, menuItemBuildASnowman, nil];
     
     // align our menu items
-    [mainMenu alignItemsVertically];
+    [mainMenu alignItemsHorizontally];
+    
+    // get window parameters and put em in an object
+    CGSize s = [[CCDirector sharedDirector] winSize];
     
     // move menu to right
-    [mainMenu setPosition:ccp(950,384)];
+    [mainMenu setPosition:ccp(s.width/2,60)];
     
     // add menu to our scene
     [self addChild:mainMenu];
@@ -81,9 +93,6 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
     if( (self=[super  initWithColor:ccc4(255, 255, 255, 255)] )) {
-        //[[CCTextureCache sharedTextureCache] addImageAsync:@"" target:self selector:@selector(textureLoaded:)];
-        //[[CCTextureCache sharedTextureCache] addImageAsync:@"Page1-ipad.jpeg" target:self selector:@selector(:)];
-        [[CCTextureCache sharedTextureCache] addImageAsync:@"Page1-ipad.jpeg" target:self selector:@selector(imageLoaded:)];
         
         GlobalDataManager *action = [[GlobalDataManager alloc]init];
         [action setUserIsInBookFlag];
@@ -92,23 +101,26 @@
         CGSize s = [[CCDirector sharedDirector] winSize];
         
         // add a background to the layer
-        CCSprite* background = [CCSprite spriteWithFile:@"main-menu-background-ipad.png"];
+        CCSprite* background = [CCSprite spriteWithFile:@"bg.jpg"];
         background.tag = 1;
-        background.opacity = 0.0;
-        background.position = ccp(s.width/2, s.height/1.65);
+        // background.opacity = 1.0;
+        background.position = ccp(s.width/2, s.height/2);
         // background.anchorPoint = ccp(0,0);
         [self addChild:background];
-  
-        id fadeIn = [CCFadeIn actionWithDuration:3];
-        
-        [background runAction:fadeIn];
 
+        // add a background to the layer
+        CCSprite* backgroundSnowman = [CCSprite spriteWithFile:@"bgSnowman-ipad.png"];
+        backgroundSnowman.tag = 1;
+        // background.opacity = 1.0;
+        backgroundSnowman.position = ccp(s.width/2, s.height/2.43);
+        // background.anchorPoint = ccp(0,0);
+        [self addChild:backgroundSnowman];
         
         // add the top text to the layer
-        CCSprite* main_menu_logo = [CCSprite spriteWithFile:@"main-menu-logo-ipad.png"];
+        CCSprite* main_menu_logo = [CCSprite spriteWithFile:@"mainMenuLogo-ipad.png"];
         main_menu_logo.tag = 1;
         main_menu_logo.opacity = 0.0;
-        main_menu_logo.position = ccp(s.width/2, s.height/4);
+        main_menu_logo.position = ccp(s.width/2, s.height/1.12);
         // background.anchorPoint = ccp(0,0);
         [self addChild:main_menu_logo];
         
@@ -122,12 +134,12 @@
         [main_menu_logo runAction:mainMenuSequence];
         
         // add bottom text to the layer
-        CCSprite* main_menu_bottom = [CCSprite spriteWithFile:@"main-menu-bottom-ipad.png"];
+        CCSprite* main_menu_bottom = [CCSprite spriteWithFile:@"authorNames-ipad.png"];
         main_menu_bottom.tag = 1;
-        main_menu_bottom.position = ccp(s.width/2, s.height/15);
+        main_menu_bottom.position = ccp(s.width/2, s.height/1.34);
         main_menu_bottom.opacity = 0.0;
         [self addChild:main_menu_bottom];  
-        
+         
         id mainMenuBottomDelay = [CCDelayTime actionWithDuration:.8];
         id mainMenuBottomFadeIn = [CCFadeIn actionWithDuration:3];
         id MainMenuBottomSeq = [CCSequence actions: mainMenuBottomDelay, mainMenuBottomFadeIn, nil];
@@ -135,11 +147,12 @@
         [main_menu_bottom runAction:MainMenuBottomSeq];
         
         // add bottom text to the layer
-        CCSprite* main_menu_top = [CCSprite spriteWithFile:@"main-menu-top-ipad.png"];
+        CCSprite* main_menu_top = [CCSprite spriteWithFile:@"photographFantasy-ipad.png"];
         main_menu_top.tag = 1;
-        main_menu_top.position = ccp(s.width/2, s.height/1.05);
+        main_menu_top.position = ccp(s.width/2, s.height/1.25);
         main_menu_top.opacity = 0.0;
-        [self addChild:main_menu_top];    
+        [self addChild:main_menu_top];  
+
         
         id mainMenuTopDelay = [CCDelayTime actionWithDuration:.8];
         id mainMenuTopFadeIn = [CCFadeIn actionWithDuration:3];
@@ -160,14 +173,18 @@
         // position the emitter (top-middle)
         emitter.position = ccp (winSize.width/2, winSize.height);
         
-        emitter.life = 4;
+        emitter.life = 10;
         emitter.lifeVar = 1;
         
-        // gravity
+        
+        // make the particles bigger for the ipad
+        emitter.scale = 1.2;
+        
+        // set the gravity direction
         emitter.gravity = ccp(0,-10);
 		
         // speed of particles
-        emitter.speed = 87;
+        emitter.speed = 15;
         emitter.speedVar = 30;
         
         [self addChild:emitter];
@@ -199,7 +216,6 @@
 {
     if (buttonIndex == 0) {
         // since we're resuming, retrieve user preference from NSUserDefaults
-        // that has the last viewed scene
         int lastSceneViewed = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
         
         StoryStateManager *lastScene = [[StoryStateManager alloc] init];

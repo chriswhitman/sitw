@@ -4,9 +4,11 @@
 //
 //  Created by Christopher Whitman on 3/23/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 // functions to make gestures work
+
+// NOTE: ccTouchEnded lies in each scene's class 
+
 -(void) registerWithTouchDispatcher{
 	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:kCCMenuTouchPriority swallowsTouches:YES];
 }
@@ -21,3 +23,4 @@
 	CGPoint converted = [[CCDirector sharedDirector] convertToGL:point];
 	[[Gestures sharedGestures] addPoint:converted];
 }
+

@@ -193,7 +193,7 @@
  
  @since v0.99.5
  */
-#define CC_RETINA_DISPLAY_SUPPORT 1
+#define CC_RETINA_DISPLAY_SUPPORT 0
 
 /** @def CC_RETINA_DISPLAY_FILENAME_SUFFIX
  It's the suffix that will be appended to the files in order to load "retina display" images.

@@ -40,6 +40,7 @@
 -(id) init
 {
     if( (self=[super initWithColor:ccc4(255,255,255,255)] )) {
+        [[CCDirector sharedDirector] setDepthTest:YES]; 
         
         // allow touches on scene
         self.isTouchEnabled=YES;
@@ -65,7 +66,15 @@
         [self addChild:background];
             
         
-             
+        // set up the swipe to continue image
+        CCSprite* swipeToContinueButton = [CCSprite spriteWithFile:@"swipe.png"];
+        [swipeToContinueButton setScale:1.0 ]; 
+        swipeToContinueButton.position = ccp(s.width/1.3, s.height/11);
+        [self addChild:swipeToContinueButton];
+        
+        // place back home button
+        #include "PlaceBackHomeButton.h"
+        
         [[NSUserDefaults standardUserDefaults] setInteger:-1 forKey:@"lastViewedScene"];
         
         int currentScene = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
@@ -76,7 +85,24 @@
     return self;
 }
 
-#include "GestureSetup.h"
+-(void) registerWithTouchDispatcher{
+	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:kCCMenuTouchPriority swallowsTouches:YES];
+}
+
+-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
+	[[Gestures sharedGestures] reset];
+	return TRUE;
+}
+
+-(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+	CGPoint point = [touch locationInView: [touch view]];
+	CGPoint converted = [[CCDirector sharedDirector] convertToGL:point];
+	[[Gestures sharedGestures] addPoint:converted];
+}
+
+
+
+#include "addBackHomeButton.h"
 
 -(void) swipeRightComplete{
     if(!touched){
@@ -96,12 +122,7 @@
 - (void)dealloc {
     [_label release];
     _label = nil;
-    
-    [[CCTextureCache sharedTextureCache] removeUnusedTextures];
-	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
-	[[CCDirector sharedDirector] purgeCachedData];
-	[self removeAllChildrenWithCleanup:YES];
-    
+
     [super dealloc];
 }
 

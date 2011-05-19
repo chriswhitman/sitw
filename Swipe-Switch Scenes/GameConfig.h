@@ -19,6 +19,9 @@
 #define kGameAutorotationCCDirector 1
 #define kGameAutorotationUIViewController 2
 
+// general settings
+#define textFadeTime 0.7
+
 //
 // Define here the type of autorotation that you want for your game
 //

@@ -27,5 +27,6 @@
 +(id) scene;
 -(void) swipeRightComplete;
 -(void) swipeLeftComplete;
+-(void) goToHomeScreen;
 
 @end

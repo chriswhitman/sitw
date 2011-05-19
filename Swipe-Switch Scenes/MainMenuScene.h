@@ -23,5 +23,15 @@
 // returns a CCScene that contains the MainMenuLayer as the only child
 +(CCScene *) scene;
 
+
 - (void) resumeOrStartOverAlert;
+@end
+
+@interface MainMenuScene : CCScene {
+    MainMenuLayer *_layer;
+}
+@property (nonatomic, retain) MainMenuLayer *layer;
+
++ (id) scene;
+
 @end
