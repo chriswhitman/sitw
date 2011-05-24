@@ -6,6 +6,7 @@
 #import "MainMenuScene.h"
 #import "GlobalDataManager.h"
 #import "InStoryMenuManager.h"
+#import "CGYAML.h"
 
 int swipeCount = 0;
 bool isForwardSwipe;
@@ -54,6 +55,8 @@ bool isForwardSwipe;
 
 @implementation PageOneLayer
 
+@synthesize textView = _textView;
+
 @synthesize label = _label;
 
 @synthesize p1l1text = _p1l1text;
@@ -73,6 +76,8 @@ bool isForwardSwipe;
 
 @synthesize p4l1text = _p4l1text;
 @synthesize p4l2text = _p4l2text;
+
+
 
 -(id) init
 {
@@ -104,7 +109,7 @@ bool isForwardSwipe;
         // allow touches on scene
         self.isTouchEnabled=YES;
 		touched=FALSE;
-        [self showP1];
+        //[self showP1];
         
         // place back home button
         #include "PlaceBackHomeButton.h"
@@ -127,6 +132,91 @@ bool isForwardSwipe;
         
         int currentScene = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
         NSLog(@"Current scene retrieved from NSUserDefaults: %i", currentScene);
+        
+        
+        // YAML STUFF
+
+        CGYAML *yaml = [[CGYAML alloc] initWithPath:@"Page1.yaml"];
+        
+        NSDictionary *mapNode = [yaml documentRootNodeAtIndex:0]; 
+        
+        NSDictionary *paragraphs = [mapNode objectForKey:@"paragraphs"];
+    
+        NSArray *paragraphsKeys = [paragraphs allKeys];
+        NSArray *sortedKeys = [paragraphsKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    
+        // id object = [paragraphs objectForKey: [sortedKeys objectAtIndex:0]];
+        
+        int count = 0;
+        
+        for(NSDictionary *pgd in paragraphs){
+            id object = [paragraphs objectForKey: [sortedKeys objectAtIndex:count]];
+            // NSLog(@"%@", object);
+            
+            // get the dictionary of all the lines of text
+            NSDictionary *linesOfText = [object objectForKey:@"content"];
+            
+            NSArray *linesOfTextKeys = [linesOfText allKeys];
+            NSArray *sortedKeys = [linesOfTextKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+            
+            int lCount = 0;
+            
+            int paragraphToShow = 0;
+            
+            for(NSDictionary *l in linesOfText){
+                id lineData = [linesOfText objectForKey: [sortedKeys objectAtIndex:lCount]];
+                // NSLog(@"%@", object);
+                NSString *lineOfText = [lineData objectForKey:@"text"];
+            
+                NSLog(@"%@", lineOfText);
+                
+                lCount+=1;
+            }
+            
+
+        }
+        
+        
+        NSEnumerator *e = [paragraphs objectEnumerator];
+        
+        id paragraphData;
+        
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        
+        // make it so there's some sort of paragraph counter that
+        // keeps track of which paragrph we're on
+        
+        
+        //while (paragraphData = [e nextObject]) {
+            // NSLog(@"%@", paragraphData);
+            
+            // this is our text data for the paragraph (text/indent)
+            // NSArray *linesOfText = [paragraphData objectForKey:@"content"];
+            
+            
+            
+            //NSLog(@"CONTENT FOR PARAGRAPH: %@", linesOfText);
+//            NSEnumerator *ee = [linesOfText objectEnumerator];
+//            id lineOfTextData;
+//            int heightSpacing = 0;
+//            
+//            
+//            while (lineOfTextData = [ee nextObject]) {
+//                
+//                // lineOfText is the individual lines of texts' value
+//                NSString *lineOfText = [lineOfTextData objectForKey:@"text"];
+//                
+//                // build out label
+//                CCLabelTTF *label = [CCLabelTTF labelWithString:lineOfText fontName:@"PopplPontifexBE-Regular" fontSize:21];
+//                label.position = ccp(winSize.width/3.5, winSize.height/(6 + heightSpacing));
+//                label.color = ccc3(0,0,0);
+//                //[self addChild:label z:1];	
+//                
+//                NSLog(@"Line of text: %@", lineOfText);
+//                
+//                heightSpacing += 2.5;
+//            }
+//         }
     }	
     return self;
 }

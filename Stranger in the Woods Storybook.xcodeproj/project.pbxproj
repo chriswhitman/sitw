@@ -176,6 +176,8 @@
 		83CD69E7134CD55100DA9813 /* Poetica-ChanceryIII.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83CD69E4134CD55000DA9813 /* Poetica-ChanceryIII.ttf */; };
 		83CD69E8134CD55100DA9813 /* Poetica-SuppSwashCapsIV.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83CD69E5134CD55000DA9813 /* Poetica-SuppSwashCapsIV.ttf */; };
 		83CD69E9134CD55100DA9813 /* PopplPontifexBE-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83CD69E6134CD55000DA9813 /* PopplPontifexBE-Regular.ttf */; };
+		83D55CFD1388A75E009DC371 /* TestData.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 83D55CFC1388A75D009DC371 /* TestData.yaml */; };
+		83D55CFF138908A2009DC371 /* Page1.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 83D55CFE138908A2009DC371 /* Page1.yaml */; };
 		83F1F2D01362184D006993D5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F1F2CF1362184D006993D5 /* Icon-72.png */; };
 		83F1F2D913626A3E006993D5 /* PreBookScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F1F2D813626A3E006993D5 /* PreBookScene.m */; };
 		83FF3C5B137DA84D000100F7 /* PreIntroPage-ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83FF3C5A137DA84C000100F7 /* PreIntroPage-ipad.jpg */; };
@@ -499,6 +501,8 @@
 		83CD69E4134CD55000DA9813 /* Poetica-ChanceryIII.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poetica-ChanceryIII.ttf"; path = "../../../../Desktop/work/SITW App/Poetica-ChanceryIII.ttf"; sourceTree = "<group>"; };
 		83CD69E5134CD55000DA9813 /* Poetica-SuppSwashCapsIV.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poetica-SuppSwashCapsIV.ttf"; path = "../../../../Desktop/work/SITW App/Poetica-SuppSwashCapsIV.ttf"; sourceTree = "<group>"; };
 		83CD69E6134CD55000DA9813 /* PopplPontifexBE-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PopplPontifexBE-Regular.ttf"; path = "../../../../Desktop/work/SITW App/PopplPontifexBE-Regular.ttf"; sourceTree = "<group>"; };
+		83D55CFC1388A75D009DC371 /* TestData.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestData.yaml; sourceTree = "<group>"; };
+		83D55CFE138908A2009DC371 /* Page1.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Page1.yaml; path = ../../../../../../Page1.yaml; sourceTree = "<group>"; };
 		83F1F2CF1362184D006993D5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../../../../Desktop/work/SITW App/Images/icons/Icon-72.png"; sourceTree = "<group>"; };
 		83F1F2D713626A3E006993D5 /* PreBookScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreBookScene.h; sourceTree = "<group>"; };
 		83F1F2D813626A3E006993D5 /* PreBookScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreBookScene.m; sourceTree = "<group>"; };
@@ -668,6 +672,8 @@
 		83B60B971339A8B000315898 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				83D55CFE138908A2009DC371 /* Page1.yaml */,
+				83D55CFC1388A75D009DC371 /* TestData.yaml */,
 				83B60CE31339A8B400315898 /* AppDelegate.h */,
 				83B60CE41339A8B400315898 /* AppDelegate.m */,
 				83B60CE61339A8B400315898 /* RootViewController.h */,
@@ -1099,6 +1105,8 @@
 				830E2D531385AEB200256A35 /* install-sh in Resources */,
 				830E2D541385AEB200256A35 /* ltmain.sh in Resources */,
 				830E2D551385AEB200256A35 /* missing in Resources */,
+				83D55CFD1388A75E009DC371 /* TestData.yaml in Resources */,
+				83D55CFF138908A2009DC371 /* Page1.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

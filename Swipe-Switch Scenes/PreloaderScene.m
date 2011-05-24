@@ -39,10 +39,7 @@ NSArray *fullpath;
     if( (self=[super  initWithColor:ccc4(255, 255, 255, 255)] )) {
         
         [[CCDirector sharedDirector] setDepthTest:NO]; 
-        
-        // allow touches on scene
-        self.isTouchEnabled=YES;
-		touched=FALSE;
+
         
         // init view
 		CGSize winSize = [[CCDirector sharedDirector] winSize];
@@ -82,7 +79,7 @@ NSArray *fullpath;
     
     // load resources
     ResourcesLoader *loader = [ResourcesLoader sharedLoader];
-    NSArray *extensions = [NSArray arrayWithObjects:@"png", @"jpg", @"jpeg", @"wav", nil];
+    NSArray *extensions = [NSArray arrayWithObjects:@"png", @"jpg", @"jpeg", @"wav", @"yaml", nil];
     
     for (NSString *extension in extensions) {
         NSArray *paths = [[NSBundle mainBundle] pathsForResourcesOfType:extension inDirectory:nil];
@@ -126,6 +123,10 @@ NSArray *fullpath;
 	if (progressPercentage == 1.0f) {
 		//[_loadingLabel setString:@"Loading complete"];
         [self resourcesFinishedLoading];
+        
+        // allow touches on scene since loading is complete
+        self.isTouchEnabled=YES;
+		touched=FALSE;
 	}
 }
 
