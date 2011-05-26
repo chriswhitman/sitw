@@ -185,7 +185,22 @@ int count2 = 0;
         int lineHeightSpacing = 0;
         NSLog(@"paragraphToShow: %i", paragraphToShow);
         NSLog(@"Count inside objToRemove loop: %i", count);
-
+        if (count2 > 1)
+        {
+            NSLog(@"Count inside objToRemove loop: %i", count);
+            for(int i = 0; i < 10; i++)
+            {
+                CCNode *objToRemove = [self getChildByTag:i];
+               
+                
+                // make an object out of the action for reuse
+                id fadeOut = [CCFadeOut actionWithDuration:0.250];
+            
+                //[objToRemove runAction:fadeOut];
+                [objToRemove removeFromParentAndCleanup:YES];
+                
+            }
+        }
         if (count == paragraphToShow)
         {   
             for(NSDictionary *l in linesOfText)
