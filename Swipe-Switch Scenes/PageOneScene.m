@@ -10,11 +10,16 @@
 
 int swipeCount = 0;
 bool isForwardSwipe;
+int paragraphToShow = 0;
+int paragraphIndex = 0;
+int count  = 0;
+int count2 = 0;
 
 @implementation PageOneScene
 @synthesize layer = _layer;
 @synthesize menuLayer = _menuLayer;
 
+#define LINE_HEIGHT_SPACING = 28
 
 - (id)init {
     
@@ -81,8 +86,8 @@ bool isForwardSwipe;
 
 -(id) init
 {
-    if( (self=[super initWithColor:ccc4(255,255,255,255)] )) {
-        
+    if( (self=[super initWithColor:ccc4(255,255,255,255)] ))
+    {
         // allow touches on scene
         self.isTouchEnabled=YES;
 		touched=FALSE;
@@ -99,17 +104,16 @@ bool isForwardSwipe;
         
         CGSize s = [[CCDirector sharedDirector] winSize];
 
+        // Add our first paragraph 
+        [self paragraphAndPageManager:paragraphToShow];
 
         CCSprite* background = [CCSprite spriteWithFile:@"Page1-ipad-small.jpeg"];
-        //background.tag = 1;
-        // background.anchorPoint = ccp(0,0);
         [background setScale:1.0]; 
         background.position = ccp(s.width/2, s.height/2);
         [self addChild:background];
         // allow touches on scene
         self.isTouchEnabled=YES;
 		touched=FALSE;
-        //[self showP1];
         
         // place back home button
         #include "PlaceBackHomeButton.h"
@@ -120,108 +124,115 @@ bool isForwardSwipe;
         //                 [CCScaleTo actionWithDuration:12.0 scale:0.83],
         //                 [CCMoveTo actionWithDuration:12.0 position:ccp(s.width/2,s.width/2 - 125)],
         //                 nil];
-            
         //[background runAction:action];
-        
-        // self.label = [CCLabelTTF labelWithString:@"Page one scene" fontName:@"Arial" fontSize:32];
-        // _label.color = ccc3(0,0,0);
-        // _label.position = ccp(winSize.width/2, winSize.height/2);
-        // [self addChild:_label];
     
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"lastViewedScene"];
         
         int currentScene = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastViewedScene"];
         NSLog(@"Current scene retrieved from NSUserDefaults: %i", currentScene);
         
-        
-        // YAML STUFF
-
-        CGYAML *yaml = [[CGYAML alloc] initWithPath:@"Page1.yaml"];
-        
-        NSDictionary *mapNode = [yaml documentRootNodeAtIndex:0]; 
-        
-        NSDictionary *paragraphs = [mapNode objectForKey:@"paragraphs"];
-    
-        NSArray *paragraphsKeys = [paragraphs allKeys];
-        NSArray *sortedKeys = [paragraphsKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    
-        // id object = [paragraphs objectForKey: [sortedKeys objectAtIndex:0]];
-        
-        int count = 0;
-        
-        for(NSDictionary *pgd in paragraphs){
-            id object = [paragraphs objectForKey: [sortedKeys objectAtIndex:count]];
-            // NSLog(@"%@", object);
-            
-            // get the dictionary of all the lines of text
-            NSDictionary *linesOfText = [object objectForKey:@"content"];
-            
-            NSArray *linesOfTextKeys = [linesOfText allKeys];
-            NSArray *sortedKeys = [linesOfTextKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-            
-            int lCount = 0;
-            
-            int paragraphToShow = 0;
-            
-            for(NSDictionary *l in linesOfText){
-                id lineData = [linesOfText objectForKey: [sortedKeys objectAtIndex:lCount]];
-                // NSLog(@"%@", object);
-                NSString *lineOfText = [lineData objectForKey:@"text"];
-            
-                NSLog(@"%@", lineOfText);
-                
-                lCount+=1;
-            }
-            
-
-        }
-        
-        
-        NSEnumerator *e = [paragraphs objectEnumerator];
-        
-        id paragraphData;
-        
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
-        
-        // make it so there's some sort of paragraph counter that
-        // keeps track of which paragrph we're on
-        
-        
-        //while (paragraphData = [e nextObject]) {
-            // NSLog(@"%@", paragraphData);
-            
-            // this is our text data for the paragraph (text/indent)
-            // NSArray *linesOfText = [paragraphData objectForKey:@"content"];
-            
-            
-            
-            //NSLog(@"CONTENT FOR PARAGRAPH: %@", linesOfText);
-//            NSEnumerator *ee = [linesOfText objectEnumerator];
-//            id lineOfTextData;
-//            int heightSpacing = 0;
-//            
-//            
-//            while (lineOfTextData = [ee nextObject]) {
-//                
-//                // lineOfText is the individual lines of texts' value
-//                NSString *lineOfText = [lineOfTextData objectForKey:@"text"];
-//                
-//                // build out label
-//                CCLabelTTF *label = [CCLabelTTF labelWithString:lineOfText fontName:@"PopplPontifexBE-Regular" fontSize:21];
-//                label.position = ccp(winSize.width/3.5, winSize.height/(6 + heightSpacing));
-//                label.color = ccc3(0,0,0);
-//                //[self addChild:label z:1];	
-//                
-//                NSLog(@"Line of text: %@", lineOfText);
-//                
-//                heightSpacing += 2.5;
-//            }
-//         }
     }	
     return self;
 }
 
 #include "GestureSetup.h"
+
+- (void) paragraphAndPageManager: (int)paragraphToShow
+{
+    count2++;
+    NSLog(@"Count2 -------------------------------- %i", count2);
+    int numOfParagaphs = 0;
+    
+    CGYAML *yaml = [[CGYAML alloc] initWithPath:@"Page1.yaml"];
+    
+    NSDictionary *mapNode = [yaml documentRootNodeAtIndex:0]; 
+    NSDictionary *paragraphs = [mapNode objectForKey:@"paragraphs"];
+    
+    // Sort out our keys alphabetically
+    NSArray *paragraphsKeys = [paragraphs allKeys];
+    NSArray *sortedKeys = [paragraphsKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    int heightSpacing = 0;
+    
+    for(NSDictionary *pgd in paragraphs)
+    {
+        numOfParagaphs++;
+    }
+    
+    for(NSDictionary *pgd in paragraphs)
+    {
+        id object = [paragraphs objectForKey: [sortedKeys objectAtIndex:count]];
+        // NSLog(@"%@", object);
+        
+        // Get our variables applicable to the entire paragraph
+        NSString *startPosX = [object objectForKey:@"startPosX"];
+        NSString *startPosY = [object objectForKey:@"startPosY"];
+        
+        // get the dictionary of all the lines of text
+        NSDictionary *linesOfText = [object objectForKey:@"content"];
+        
+        // retrieve original set of dictionary's keys
+        NSArray *linesOfTextKeys = [linesOfText allKeys];
+        
+        // create a new set of arrange keys based on original 
+        NSArray *sortedKeys = [linesOfTextKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+        
+        // line count, to keep track of which paragraph
+        int pCount = 0;
+        
+        // Tracks the progressively increasing spacing between lines
+        int lineHeightSpacing = 0;
+        NSLog(@"paragraphToShow: %i", paragraphToShow);
+        NSLog(@"Count inside objToRemove loop: %i", count);
+
+        if (count == paragraphToShow)
+        {   
+            for(NSDictionary *l in linesOfText)
+            {
+                // make a new object with our lines of text now sorted (with our sorted keys)
+                id lineData = [linesOfText objectForKey: [sortedKeys objectAtIndex:pCount]];
+
+                //
+                // Get our variables from YAML file for this paragraph
+                //
+                // gets the actual line of text content from object
+                NSString *lineOfText = [lineData objectForKey:@"text"];
+                // gets indent variable if there should be in text file
+                NSString *lineIndent = [lineData objectForKey:@"indentAmount"];
+                
+                //
+                // Cast our retrieved variables so they're usable
+                //
+                int startPosXCasted = [startPosX intValue];
+                int startPosYCasted = [startPosY intValue];
+                int lineIndentCasted = [lineIndent intValue];
+                
+                // build out label
+                CCLabelTTF *label = [CCLabelTTF labelWithString:lineOfText fontName:@"PopplPontifexBE-Regular" fontSize:21];
+                label.position = ccp(startPosXCasted+=lineIndentCasted, startPosYCasted+=lineHeightSpacing);
+                label.color = ccc3(0,0,0); 
+                label.tag = pCount;
+                [self addChild:label z:1];	
+                
+                
+                NSLog(@"%@", lineOfText);
+                NSLog(@"Number of paragraphs: %i", numOfParagaphs);
+                
+                pCount++;
+                
+                // this controls the spacing between lines
+                lineHeightSpacing = lineHeightSpacing - 30;
+            }
+            break;
+        }
+        count++;
+    }
+    
+    paragraphToShow++;
+}
+
+
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
@@ -232,96 +243,69 @@ bool isForwardSwipe;
     
     // forward swipe, moves story forward
     // maybe debug and check direction of swipe
-    if(isForwardSwipe)
-    {
-        
-        swipeCount++;
-        
-        switch (swipeCount)
-        {
-            case 1:
-            {
-                [self hideP1];
-                
-                [self showP2];
-                
-                break;
-            }
-            case 2:
-            {
-                [self hideP2];
-                
-                [self showP3];
-                
-                break;
-            }
-            case 3:
-            {
-                [self hideP3];
-                
-                [self showP4];
-                
-                break;
-            }
-            default:
-                break;
-        }
-        
-        if (swipeCount == 4)
-        {        
-            swipeCount = 0;
-            
-            PageTwoScene *pageTwoScene = [PageTwoScene node];
-            [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn 
-                                                       transitionWithDuration:1.0 
-                                                       scene:pageTwoScene 
-                                                       backwards:FALSE]];
-            
-        }
-    // backward swipe, moves story backward
-    } else {
-        swipeCount--;
-        
-        switch (swipeCount)
-        {
-            case 0:
-            {
-                [self hideP2];
-                
-                [self showP1];
-                
-                break;
-            }
-            case 1:
-            {   
-                [self hideP3];
-                
-                [self showP2];
-                
-                break;
-            }
-            case 2:
-            {
-                break;
-            }
-            default:
-                break;
-        }
-        
-        if (swipeCount == -1)
-        {
-            swipeCount = 0;
-            
-            IntroScene *introScene = [IntroScene node];
-            [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn 
-                                                       transitionWithDuration:1.0 
-                                                       scene:introScene 
-                                                       backwards:TRUE]];
-        }
-        
-    }
+    [self paragraphAndPageManager:paragraphToShow+1];
     
-	NSLog(@"Touch Ended:%@", touch);
+    
+//    if(isForwardSwipe)
+//    {
+//        swipeCount++;
+//
+//        [self paragraphAndPageManager:paragraphToShow+1];
+//                
+//        if (swipeCount == 4)
+//        {        
+//            swipeCount = 0;
+//            
+//            PageTwoScene *pageTwoScene = [PageTwoScene node];
+//            [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn 
+//                                                       transitionWithDuration:1.0 
+//                                                       scene:pageTwoScene 
+//                                                       backwards:FALSE]];
+//        }
+//    // backward swipe, moves story backward
+//    } else {
+//        swipeCount--;
+//        
+//        switch (swipeCount)
+//        {
+//            case 0:
+//            {
+//                [self hideP2];
+//                
+//                [self showP1];
+//                
+//                break;
+//            }
+//            case 1:
+//            {   
+//                [self hideP3];
+//                
+//                [self showP2];
+//                
+//                break;
+//            }
+//            case 2:
+//            {
+//                break;
+//            }
+//            default:
+//                break;
+//        }
+//        
+//        if (swipeCount == -1)
+//        {
+//            swipeCount = 0;
+//            
+//            IntroScene *introScene = [IntroScene node];
+//            [[CCDirector sharedDirector] replaceScene:[CCTransitionPageTurn 
+//                                                       transitionWithDuration:1.0 
+//                                                       scene:introScene 
+//                                                       backwards:TRUE]];
+//        }
+//        
+//    }
+//    
+//	NSLog(@"Touch Ended:%@", touch);
 }
 
 
