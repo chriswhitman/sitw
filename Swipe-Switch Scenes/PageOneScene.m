@@ -183,13 +183,12 @@ int count2 = 0;
         
         // Tracks the progressively increasing spacing between lines
         int lineHeightSpacing = 0;
-        NSLog(@"paragraphToShow: %i", paragraphToShow);
-        NSLog(@"Count inside objToRemove loop: %i", count);
-        if (count2 > 1)
+        NSLog(@"paragraphToShow: %i", paragraphToShow);        if (count2 > 1)
         {
-            NSLog(@"Count inside objToRemove loop: %i", count);
             for(int i = 0; i < 10; i++)
             {
+                NSLog(@"Count inside objToRemove loop: %i", count);
+
                 CCNode *objToRemove = [self getChildByTag:i];
                
                 
