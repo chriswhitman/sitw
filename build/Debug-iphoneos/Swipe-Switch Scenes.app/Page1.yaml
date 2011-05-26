@@ -1,0 +1,57 @@
+number    : (int)pageNum  
+bgUrl     : (NSString)bgUrl
+bgPosition: (CGPoint)bgStartCoords
+xStartPos : (int)xCoordStart
+yStartPos : (int)yCoordStart
+paragraphs:
+  
+  paragraph1:
+    position     :  (CGPoint) x y
+    zoomAfter    :  (BOOL) YES/NO
+    zoomIntensity:  (FLOAT) 1.0 is 100%
+    panAfter     :  (BOOL) YES/NO
+    panTo        :  (CGPoint)
+    content      :
+      firstLine:  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) First line text911991
+      secondLine:  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) Second line text           
+      thirdLine :  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) Third line text  
+  paragraph2:
+    position     :  (CGPoint) x y
+    zoomAfter    :  (BOOL) YES/NO
+    zoomIntensity:  (FLOAT) 1.0 is 100%
+    panAfter     :  (BOOL) YES/NO
+    panTo        :  (CGPoint)
+    content      :
+      lineOfText1:  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) First line t222222
+      lineOfText2:  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) Second line text           
+      lineOfText3:  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) Third line text
+        
+  paragraph3:
+    position     :  (CGPoint) x y
+    zoomAfter    :  (BOOL) YES/NO
+    zoomIntensity:  (FLOAT) 1.0 is 100%
+    panAfter     :  (BOOL) YES/NO
+    panTo        :  (CGPoint)
+    content      :
+      lineOfText1:  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) First line 33333333
+      lineOfText2:  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) Second line text           
+      lineOfText3:  
+        indentAmount:  (int) indentAmount
+        text        :  (NSString) Third line text
+

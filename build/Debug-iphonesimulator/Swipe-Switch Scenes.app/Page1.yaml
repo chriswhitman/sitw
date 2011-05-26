@@ -1,0 +1,65 @@
+# the numbers following are VERY important for sorting purposes
+# Otherwise, the dictionaries will not be in order for pararaphs and lines of text
+number    : (int)pageNum  
+bgUrl     : (NSString)bgUrl
+bgPosition: (CGPoint)bgStartCoords
+startPosX : (int)xCoordStart
+StartPosY : (int)yCoordStart
+paragraphs:
+  
+  paragraph1:
+    startPosX    : 350
+    startPosY    : 180
+    zoomDuration : 0
+    zoomIntensity: 1.0 (no zoom)
+    panDuration  : 0
+    panToX       : x
+    panToY       : y
+    content      :
+      lineOfText1:  
+        indentAmount:  0
+        text        :  1_1(NSString) First line t222222
+      lineOfText2:  
+        indentAmount:  40
+        text        :  1_2(NSString) Second line text           
+      lineOfText3:  
+        indentAmount:  80
+        text        :  1_3(NSString) Third line text
+ 
+  paragraph2:
+    startPosX    : 320
+    startPosY    : 220
+    zoomDuration : 0
+    zoomIntensity: 1.0 (no zoom)
+    panDuration  : 0
+    panToX       : x
+    panToY       : y
+    content      :
+      lineOfText1:  
+        indentAmount:  0
+        text        :  2_1(NSString) First line t222222
+      lineOfText2:  
+        indentAmount:  40
+        text        :  2_2(NSString) Second line text           
+      lineOfText3:  
+        indentAmount:  80
+        text        :  2_3(NSString) Third line text
+        
+  paragraph3:
+    startPosX    : 350
+    startPosY    : 180
+    zoomDuration : 0
+    zoomIntensity: 1.0 (no zoom)
+    panDuration  : 0
+    panToX       : x
+    panToY       : y
+    content      :
+      lineOfText1:  
+        indentAmount:  0
+        text        :  3_1(NSString) First line t222222
+      lineOfText2:  
+        indentAmount:  40
+        text        :  3_2(NSString) Second line text           
+      lineOfText3:  
+        indentAmount:  80
+        text        :  3_3(NSString) Third line text
